@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://hnjamqxusjxe"]
+
+[ext_resource type="Script" path="res://entity/player/player_dropping_marker.gd" id="1_tqon5"]
+[ext_resource type="Texture2D" uid="uid://kyohmx8xjp8m" path="res://entity/player/player_dropping_marker.png" id="2_odp04"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Default"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy587"]
+_data = {
+"Default": SubResource("1"),
+"RESET": SubResource("2")
+}
+
+[node name="PlayerDroppingMarker" type="Node2D"]
+script = ExtResource("1_tqon5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 20
+texture = ExtResource("2_odp04")
+hframes = 8
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iy587")
+}

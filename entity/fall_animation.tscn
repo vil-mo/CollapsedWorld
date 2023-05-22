@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3istve3037o4"]
+
+[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/player/player_fall.png" id="1_mgauq"]
+
+[sub_resource type="GDScript" id="3"]
+script/source = "extends Sprite2D
+
+var velocity : Vector2
+var full_velocity : float
+@onready var rotation_speed : float = randf() * PI - PI/2
+
+func set_velocity(original_velocity : Vector2) -> void:
+	velocity = original_velocity
+	full_velocity = original_velocity.length()
+
+func _physics_process(delta):
+	global_position += velocity * delta
+	velocity = velocity.move_toward(Vector2.ZERO, full_velocity * delta)
+	modulate.a -= delta
+	scale = scale.move_toward(Vector2.ZERO, delta)
+	if modulate.a <= 0:
+		queue_free()
+	rotation += rotation_speed * delta
+"
+
+[node name="FallAnimation" type="Sprite2D"]
+texture = ExtResource("1_mgauq")
+script = SubResource("3")

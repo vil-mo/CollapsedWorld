@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjqmtik2btkch"]
+
+[ext_resource type="Texture2D" uid="uid://djytry0x3uqih" path="res://enviroment/background/background.png" id="1"]
+[ext_resource type="Script" path="res://enviroment/room_manager.gd" id="2"]
+[ext_resource type="Script" path="res://enviroment/camera.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://byd4we8v6qqmw" path="res://user_interface/interface.tscn" id="4_2ck2r"]
+
+[node name="RoomManager" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -100
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
+layer = -100
+
+[node name="Background" type="Sprite2D" parent="Background/CanvasLayer"]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("1")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3")
+
+[node name="Interface" parent="." instance=ExtResource("4_2ck2r")]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dxj8yn5kb0cov"]
+
+[ext_resource type="Texture2D" uid="uid://pwonw1dhfnsf" path="res://items/armor/iron_armor/prayer_iron_armor.png" id="1_a22rl"]
+[ext_resource type="Texture2D" uid="uid://lngxh3uict58" path="res://items/armor/iron_armor/iron_armor_icon.png" id="2_ii4g6"]
+[ext_resource type="PackedScene" path="res://items/armor/iron_armor/IronArmor.tscn" id="3_ikqaj"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="4_xc22m"]
+
+[resource]
+script = ExtResource("4_xc22m")
+key = "iron_armor"
+item_type = 1
+scene = ExtResource("3_ikqaj")
+icon = ExtResource("2_ii4g6")
+grounded_sprite = ExtResource("1_a22rl")
+ui_name = "Iron Armor"
+ui_description = "This is iron armor
+15 def"
