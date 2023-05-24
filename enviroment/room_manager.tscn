@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://djytry0x3uqih" path="res://enviroment/background/background.png" id="1"]
 [ext_resource type="Script" path="res://enviroment/room_manager.gd" id="2"]
 [ext_resource type="Script" path="res://enviroment/camera.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://byd4we8v6qqmw" path="res://user_interface/interface.tscn" id="4_2ck2r"]
+[ext_resource type="PackedScene" uid="uid://dsh1skr0gan23" path="res://user_interface/interface.tscn" id="4_2ck2r"]
 
 [node name="RoomManager" type="Node2D"]
 script = ExtResource("2")

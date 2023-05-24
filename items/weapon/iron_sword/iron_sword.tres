@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://o3rrh4fcw0xn"]
+
+[ext_resource type="Texture2D" uid="uid://brhbbkghlidsp" path="res://items/weapon/iron_sword/iron_sword.png" id="1_46c82"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_4dmba"]
+[ext_resource type="Texture2D" uid="uid://bbsnoyj6ypslo" path="res://items/weapon/iron_sword/iron_sword_icon.png" id="2_5if81"]
+
+[resource]
+script = ExtResource("2_4dmba")
+key = "iron_sword"
+item_type = 1
+icon = ExtResource("2_5if81")
+grounded_sprite = ExtResource("1_46c82")
+ui_name = "Iron Sword"
+ui_description = "Made with iron"

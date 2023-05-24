@@ -1,41 +1,28 @@
 extends TextureRect
 class_name SlotUI
-@onready var itventory_ui : Control = get_parent().get_parent()
 
-@export var deafult_texture : Texture2D
-var time_to_remove_item = 1.0
+@export var deafult_icon : Texture2D
+@export var show_item_amount := true
 
+@onready var icon : TextureRect = $Icon
+@onready var amount_label : Label = $Amount
 
-var has_item := false
-var is_removing_item := false
-var removing_time_counter := 0.0
-var index := []
+var stored_item : ItemKey = null
 
 func _ready():
-	if not deafult_texture:
-		deafult_texture = texture
+	icon.texture = deafult_icon
+
+func _physics_process(delta: float) -> void:
+	if stored_item && stored_item.amount > 1:
+		amount_label.visible = true
+		amount_label.text = str(stored_item.amount)
 	else:
-		texture = deafult_texture
+		amount_label.visible = false
 
-func _gui_input(event):
-	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT && has_item:
-		if event.pressed:
-			is_removing_item = true
-			removing_time_counter = 0
-		else:
-			is_removing_item = false
-
-func _physics_process(delta):
-	if is_removing_item:
-		removing_time_counter += get_process_delta_time()
-		if removing_time_counter >= time_to_remove_item:
-			GameManager.player_node.drop_item(index)
-			is_removing_item = false
-
-func add_item(item_key):
-	texture = item_key.icon
-	has_item = true
+func store_item(item_key):
+	icon.texture = item_key.icon
+	stored_item = item_key
 
 func remove_item():
-	texture = deafult_texture
-	has_item = false
+	stored_item = null
+	icon.texture = deafult_icon

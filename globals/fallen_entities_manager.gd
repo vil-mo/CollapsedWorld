@@ -26,3 +26,5 @@ func drop_entity(entity : Entity, in_point : Vector2 = Vector2.INF):
 	effect.queue_free()
 	entity.global_position = in_point
 	room_manager.add_instance(entity)
+	
+	entity.is_fell = false

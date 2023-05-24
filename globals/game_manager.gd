@@ -3,38 +3,44 @@ extends Node
 # Z-indexes ===============
 # -100: backgrounnd
 # -10 : rooms floor
-# -5  : grounded items
+# -5  : collectables
 # -1  : wheapons behind player
 # 0   : player
 # 1   : wheapons above player
 # 100 : interface
 # ============================
 
-const PlayerScene = preload("res://entity/player/player.tscn")
+const PlayerScene = preload("res://entity/playable_characters/playable_character.tscn")
 
-@onready var player : Player = PlayerScene.instantiate()
+@onready var player : PlayableCharacter = PlayerScene.instantiate()
 var room_manager : RoomManager
 
 var ITEMS_KEY_INFORMATION := {}
 
 func _init():
-	var dir = DirAccess.open("res://items/keys/")
+	initialize_item_keys("res://items/")
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	FallenEntitiesManager.drop_entity(player)
+
+func initialize_item_keys(in_directory : String):
+	var dir = DirAccess.open(in_directory)
 	dir.list_dir_begin()
 	
 	while true:
 		var file = dir.get_next()
 		if file == "":
 			break
-		else:
-			var loaded_file = load("res://items/keys/" + file)
+		elif dir.current_is_dir():
+			initialize_item_keys(in_directory + file + "/")
+		elif file.ends_with(".tres"):
+			var loaded_file = load(in_directory + file)
 			if loaded_file is ItemKey:
+				assert(! ITEMS_KEY_INFORMATION.has(loaded_file.key), 'Item with key "' + loaded_file.key + '" already exists')
 				ITEMS_KEY_INFORMATION[loaded_file.key] = loaded_file
-		
+	
 	dir.list_dir_end()
-
-func _ready() -> void:
-	await get_tree().physics_frame
-	FallenEntitiesManager.drop_entity(player)
 
 func get_random_point_in_several_polygons(polygons : Array[PackedVector2Array]):
 	var triangulated_points : Array[Vector2] = []

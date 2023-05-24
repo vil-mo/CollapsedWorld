@@ -1,6 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://brurklpebqms"]
+[gd_scene load_steps=16 format=3 uid="uid://d0iunm4k7t830"]
 
 [ext_resource type="Texture2D" uid="uid://rfcfylr0w123" path="res://rooms/test/ground1.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://lamuc7f5ghun" path="res://other/collectable/collectable.tscn" id="2_uhkuw"]
+[ext_resource type="Script" path="res://other/collectable/collectable_data/item_collectable_data.gd" id="3_36067"]
+[ext_resource type="Resource" uid="uid://i36h1myr5kjo" path="res://items/material/wood/key_wood.tres" id="3_uvbav"]
+[ext_resource type="Resource" uid="uid://xg4sd5smg1ve" path="res://items/material/leaf/key_leaf.tres" id="5_0sbka"]
+[ext_resource type="Resource" path="res://items/weapon/shadow_sword/shadow_sword.tres" id="5_7bujb"]
+[ext_resource type="Resource" uid="uid://5see42nfbqql" path="res://items/material/gold/key_gold.tres" id="5_x07dt"]
+[ext_resource type="Resource" uid="uid://d0sgtlywr2pvi" path="res://items/material/cog/key_cog.tres" id="6_2hjvg"]
+[ext_resource type="Resource" uid="uid://o3rrh4fcw0xn" path="res://items/weapon/iron_sword/iron_sword.tres" id="6_lva25"]
+
+[sub_resource type="Resource" id="Resource_ypdpy"]
+script = ExtResource("3_36067")
+item_key = ExtResource("3_uvbav")
+min_amount = 1
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_7mvhj"]
+script = ExtResource("3_36067")
+item_key = ExtResource("5_7bujb")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_8k3hc"]
+script = ExtResource("3_36067")
+item_key = ExtResource("6_lva25")
+min_amount = 2
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_f17fc"]
+script = ExtResource("3_36067")
+item_key = ExtResource("5_0sbka")
+min_amount = 5
+max_amount = 7
+
+[sub_resource type="Resource" id="Resource_wprr1"]
+script = ExtResource("3_36067")
+item_key = ExtResource("6_2hjvg")
+min_amount = 1
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_hxdc4"]
+script = ExtResource("3_36067")
+item_key = ExtResource("5_x07dt")
+min_amount = 11
+max_amount = 24
 
 [node name="TestRoom1" type="StaticBody2D"]
 collision_layer = 4
@@ -17,7 +61,38 @@ position = Vector2(-175.7, -94)
 polygon = PackedVector2Array(62, 96, 62, 156, 283, 154, 283, 94, 171.7, 94, 171.7, 64, 246.7, 64, 246.7, 94, 282.7, 94, 282.7, 33, 61.7, 33)
 
 [node name="SafeAreas" type="Node2D" parent="."]
+visible = false
 
 [node name="SafeArea" type="Polygon2D" parent="SafeAreas"]
 color = Color(1, 1, 1, 0.462745)
 polygon = PackedVector2Array(-105, -54, 102, -54, 102, 52, -105, 52, -105, 5, 76, 5, 76, -36, -9, -36, -9, 5, -105, 5)
+
+[node name="Collectable" parent="." instance=ExtResource("2_uhkuw")]
+position = Vector2(45, 15)
+collectable_data = SubResource("Resource_ypdpy")
+attract_to_player = false
+
+[node name="Collectable5" parent="." instance=ExtResource("2_uhkuw")]
+position = Vector2(48, -43)
+collectable_data = SubResource("Resource_7mvhj")
+attract_to_player = false
+
+[node name="Collectable6" parent="." instance=ExtResource("2_uhkuw")]
+position = Vector2(84, -44)
+collectable_data = SubResource("Resource_8k3hc")
+attract_to_player = false
+
+[node name="Collectable2" parent="." instance=ExtResource("2_uhkuw")]
+position = Vector2(75, 28)
+collectable_data = SubResource("Resource_f17fc")
+attract_to_player = false
+
+[node name="Collectable3" parent="." instance=ExtResource("2_uhkuw")]
+position = Vector2(88, 2)
+collectable_data = SubResource("Resource_wprr1")
+attract_to_player = false
+
+[node name="Collectable4" parent="." instance=ExtResource("2_uhkuw")]
+position = Vector2(57, 44)
+collectable_data = SubResource("Resource_hxdc4")
+attract_to_player = false

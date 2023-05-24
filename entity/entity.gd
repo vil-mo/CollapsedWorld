@@ -17,6 +17,7 @@ class_name Entity
 @onready var ground_detector : Area2D = $GroundDetector
 
 var is_on_ground := true
+var is_fell := true
 
 const FallAnimationScene = preload("res://entity/fall_animation.tscn")
 
@@ -26,6 +27,9 @@ func _enter_tree() -> void:
 	got_on_ground()
 	if sprite:
 		sprite.material.set_shader_parameter("flash_amount", 0)
+
+func _ready() -> void:
+	pass
 
 func _physics_process(delta):
 	move_and_slide()
@@ -95,6 +99,8 @@ func deal_fall_damage():
 	pass
 
 func fall():
+	is_fell = true
+	
 	var fall_animation : Sprite2D = FallAnimationScene.instantiate()
 	fall_animation.set_velocity(velocity)
 	fall_animation.texture = fall_texture

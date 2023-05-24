@@ -4,6 +4,7 @@ class_name RoomManager
 var current_room : StaticBody2D = null
 var safe_areas : Array[PackedVector2Array] = []
 
+@onready var interface = $Interface
 @onready var camera := $Camera2D
 
 signal room_created(room)
@@ -47,7 +48,7 @@ func get_random_point() -> Vector2:
 	return GameManager.get_random_point_in_several_polygons(safe_areas)
 
 func get_list_of_rooms(criterias := {}) -> Array[PackedScene]:
-	return [load("res://rooms/test/TestRoom1.tscn") as PackedScene, load("res://rooms/test/TestRoom2.tscn") as PackedScene, load("res://rooms/test/TestRoom3.tscn") as PackedScene]
+	return [load("res://rooms/test/TestRoom1.tscn") as PackedScene] #, load("res://rooms/test/TestRoom2.tscn") as PackedScene, load("res://rooms/test/TestRoom3.tscn") as PackedScene]
 
 
 

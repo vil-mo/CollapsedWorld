@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var inventory := $Control/Inventory
+
 @onready var animation : AnimationPlayer = $AnimationPlayer
 var inventory_apeared := false
 
@@ -9,6 +11,10 @@ func _physics_process(delta: float) -> void:
 			inventory_apeared = false
 			animation.play("InventoryDissapear")
 		else:
-			inventory_apeared = true				
+			inventory_apeared = true
 			animation.play("InventoryAppear")
-	
+
+func open_inventory():
+	pass
+func close_inventory():
+	pass

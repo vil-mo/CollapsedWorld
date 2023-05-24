@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://i36h1myr5kjo"]
+
+[ext_resource type="Texture2D" uid="uid://cjng88w824a0h" path="res://items/material/wood/wood_grounded.png" id="1_jrnld"]
+[ext_resource type="Texture2D" uid="uid://cm2vt23ssqnq4" path="res://items/material/wood/wood_icon.png" id="2_djhhx"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="3_h3xmf"]
+
+[resource]
+script = ExtResource("3_h3xmf")
+key = "wood"
+item_type = 4
+icon = ExtResource("2_djhhx")
+grounded_sprite = ExtResource("1_jrnld")
+ui_name = "Wood"
+ui_description = "Thisiswood
+"

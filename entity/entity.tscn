@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv462n5chpcoq"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://entity/entity.gd" id="1_djo1o"]
-[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/player/player_fall.png" id="2_i3tnm"]
-[ext_resource type="Texture2D" uid="uid://dkocmifd7b57w" path="res://entity/medium_shade.png" id="3_2hj4w"]
-[ext_resource type="Script" path="res://custom_scripts/entity_stats.gd" id="3_52htm"]
-[ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/player/player_default.png" id="4_dpxq3"]
+[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/playable_characters/void/void_fall.png" id="2_i3tnm"]
+[ext_resource type="Texture2D" uid="uid://dkocmifd7b57w" path="res://entity/shades/medium_shade.png" id="3_2hj4w"]
+[ext_resource type="Script" path="res://other/entity_stats.gd" id="3_52htm"]
+[ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/playable_characters/void/void_default.png" id="4_dpxq3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="5_amxdo"]
 
 [sub_resource type="Resource" id="Resource_3x724"]
