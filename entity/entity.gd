@@ -22,6 +22,7 @@ var is_fell := true
 const FallAnimationScene = preload("res://entity/fall_animation.tscn")
 
 func _enter_tree() -> void:
+	is_fell = false
 	velocity = Vector2.ZERO
 	is_on_ground = true
 	got_on_ground()

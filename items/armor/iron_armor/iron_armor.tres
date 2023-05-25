@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://bombvgpj2e1r6"]
+
+[ext_resource type="Texture2D" uid="uid://pwonw1dhfnsf" path="res://items/armor/iron_armor/prayer_iron_armor.png" id="1_eqgfg"]
+[ext_resource type="Texture2D" uid="uid://lngxh3uict58" path="res://items/armor/iron_armor/iron_armor_icon.png" id="2_1irva"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_5dcub"]
+
+[resource]
+script = ExtResource("2_5dcub")
+key = "iron_armor"
+item_type = 0
+icon = ExtResource("2_1irva")
+grounded_sprite = ExtResource("1_eqgfg")
+ui_name = "Iron Armor"
+ui_description = "Armor made with Iron"

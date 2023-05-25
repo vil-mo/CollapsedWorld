@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://br1g73r857b0c"]
 
 [ext_resource type="Script" path="res://entity/entity.gd" id="1_djo1o"]
 [ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/playable_characters/void/void_fall.png" id="2_i3tnm"]
@@ -52,7 +52,7 @@ texture = ExtResource("3_2hj4w")
 [node name="Sprite" type="Node2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_kapcq")
 
-[node name="Body" type="Sprite2D" parent="Visuals/Sprite"]
+[node name="Torso" type="Sprite2D" parent="Visuals/Sprite"]
 use_parent_material = true
 position = Vector2(0, -8)
 texture = ExtResource("4_dpxq3")

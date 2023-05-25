@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bow8etlgl7o1t"]
 
-[ext_resource type="PackedScene" path="res://entity/entity.tscn" id="1_b6taw"]
+[ext_resource type="PackedScene" uid="uid://br1g73r857b0c" path="res://entity/entity.tscn" id="1_b6taw"]
 [ext_resource type="Script" path="res://entity/playable_characters/playable_character.gd" id="2_elgsj"]
 [ext_resource type="PackedScene" path="res://entity/playable_characters/void/void_drop_effect.tscn" id="3_apilw"]
 [ext_resource type="Script" path="res://other/entity_stats.gd" id="4_mqvhk"]
@@ -69,14 +69,18 @@ drop_effect = ExtResource("3_apilw")
 stats = SubResource("Resource_pq5ma")
 alignments = 1
 
-[node name="Shade" parent="Visuals" index="0"]
-position = Vector2(0, -8)
-
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 rotation = 1.5708
 shape = SubResource("3")
 
 [node name="InventoryInstances" type="Node2D" parent="." index="2"]
+
+[node name="Hitbox" parent="." index="3"]
+visible = false
+
+[node name="GroundDetector" parent="." index="4"]
+visible = false
 
 [node name="AreaOfInteraction" type="Area2D" parent="." index="5"]
 visible = false
@@ -88,6 +92,7 @@ script = SubResource("5")
 shape = SubResource("2")
 
 [node name="CollectableCollector" type="Area2D" parent="." index="6"]
+visible = false
 collision_layer = 0
 collision_mask = 32
 

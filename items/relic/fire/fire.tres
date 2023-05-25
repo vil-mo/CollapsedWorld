@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://ubdhigqiw85l"]
+
+[ext_resource type="Texture2D" uid="uid://bh4cm02y4xjvh" path="res://items/relic/fire/fire_icon.png" id="1_dhv6x"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_3nf5t"]
+
+[resource]
+script = ExtResource("2_3nf5t")
+key = "f_t_r"
+item_type = 3
+icon = ExtResource("1_dhv6x")
+grounded_sprite = ExtResource("1_dhv6x")
+ui_name = "Fire"
+ui_description = "*Cool*"

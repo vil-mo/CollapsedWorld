@@ -37,7 +37,7 @@ func initialize_item_keys(in_directory : String):
 		elif file.ends_with(".tres"):
 			var loaded_file = load(in_directory + file)
 			if loaded_file is ItemKey:
-				assert(! ITEMS_KEY_INFORMATION.has(loaded_file.key), 'Item with key "' + loaded_file.key + '" already exists')
+				assert(! ITEMS_KEY_INFORMATION.has(loaded_file.key), 'Item with key "' + loaded_file.key + '" already exists, file: ' + file)
 				ITEMS_KEY_INFORMATION[loaded_file.key] = loaded_file
 	
 	dir.list_dir_end()

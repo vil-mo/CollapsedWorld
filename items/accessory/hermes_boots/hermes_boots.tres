@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://dn8pnwiys1ctp"]
+
+[ext_resource type="Texture2D" uid="uid://conip40ydu8k3" path="res://items/accessory/hermes_boots/hermes_boots_icon.png" id="1_uiqgf"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_1e8jg"]
+
+[resource]
+script = ExtResource("2_1e8jg")
+key = "hermes_boots"
+item_type = 2
+icon = ExtResource("1_uiqgf")
+grounded_sprite = ExtResource("1_uiqgf")
+ui_name = "Hermes Boots"
+ui_description = "Terraria referrence
+"

@@ -5,25 +5,32 @@ class_name InventoryUI
 @export var weapon_slots : Control
 @export var accessory_slots : Control
 @export var material_slots : Control
+@export var relic_slots : Control
 
 @onready var dragged_item_icon : TextureRect = $DraggedItemIcon
+const DRAGGED_ITEM_ICON_OFFSET = Vector2(-25, -25)
 
-var dragged_item : ItemKey = null
+var dragged_slot : SlotUI = null
+
+func _input(event: InputEvent) -> void:
+	if dragged_slot && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
+		stop_dragging_slot()
 
 func _physics_process(delta: float) -> void:
-	if dragged_item:
-		dragged_item_icon.global_position = get_global_mouse_position()
+	if dragged_slot:
+		dragged_item_icon.global_position = get_global_mouse_position() + DRAGGED_ITEM_ICON_OFFSET	
 
-func start_dragging_item(item : ItemKey):
-	dragged_item = item
-	dragged_item_icon.texture = item.icon
+func start_dragging_slot(slot : SlotUI):
+	slot.set_dragging(true)
+	dragged_slot = slot
+	dragged_item_icon.texture = slot.stored_item.icon
 
-func stop_dragging_item():
-	dragged_item = null
+func stop_dragging_slot():
+	dragged_slot.set_dragging(false)
+	dragged_slot = null
 	dragged_item_icon.texture = null
 
 func update_slots(type, array : Array):
-	
 	var slots_parent : Control
 	
 	match type:
@@ -35,6 +42,8 @@ func update_slots(type, array : Array):
 			slots_parent = accessory_slots
 		ItemKey.ITEM_TYPE.MATERIAL:
 			slots_parent = material_slots
+		ItemKey.ITEM_TYPE.RELIC:
+			slots_parent = relic_slots
 	
 	var wanted_slot_amount = array.size() + 1
 	var current_slot_amount = slots_parent.get_child_count()
@@ -52,3 +61,16 @@ func update_slots(type, array : Array):
 			slots[i].store_item(array[i])
 		else:
 			slots[i].remove_item()
+
+func swap_slot_items(slot1 : SlotUI, slot2 : SlotUI):
+	var item1 = slot1.stored_item
+	var item2 = slot2.stored_item
+	
+	if item2:
+		slot1.store_item(item2)
+	else:
+		slot1.remove_item()
+	if item1:
+		slot2.store_item(item1)
+	else:
+		slot2.remove_item()

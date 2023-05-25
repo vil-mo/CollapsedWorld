@@ -1,19 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsh1skr0gan23"]
+[gd_scene load_steps=21 format=3 uid="uid://dsh1skr0gan23"]
 
 [ext_resource type="Texture2D" uid="uid://b37reel68xoxe" path="res://user_interface/healthbar/under.png" id="1_pgfe6"]
 [ext_resource type="Script" path="res://user_interface/ui.gd" id="1_wf5xw"]
 [ext_resource type="Texture2D" uid="uid://crkfcdexr0vbt" path="res://user_interface/healthbar/over.png" id="2_r34pr"]
 [ext_resource type="Texture2D" uid="uid://cfltj8572hyat" path="res://user_interface/healthbar/progress.png" id="3_wr1ew"]
 [ext_resource type="Texture2D" uid="uid://cy8hymxcmpak7" path="res://user_interface/inventory/slot/armor_icon.png" id="4_xufrg"]
-[ext_resource type="PackedScene" uid="uid://5tn0yw5mygre" path="res://user_interface/inventory/slot/slot_ui.tscn" id="5_haqhu"]
+[ext_resource type="PackedScene" uid="uid://df85672vdaf2" path="res://user_interface/inventory/slot/slot_ui.tscn" id="5_haqhu"]
 [ext_resource type="Script" path="res://user_interface/inventory/inventory_ui.gd" id="5_q8agf"]
+[ext_resource type="PackedScene" uid="uid://bynrbcvegm0i" path="res://user_interface/inventory/slot/equipment_slot_ui.tscn" id="6_fu35r"]
 [ext_resource type="Texture2D" uid="uid://b82bxlsearoch" path="res://user_interface/inventory/slot/weapon_icon.png" id="6_hdeac"]
 [ext_resource type="Texture2D" uid="uid://be34osimts3qm" path="res://user_interface/inventory/slot/accessory_icon.png" id="7_c6v5h"]
 [ext_resource type="Texture2D" uid="uid://bj0wbmnotfmhf" path="res://user_interface/inventory/inventory_panel_for_slots.png" id="9_qitx2"]
 [ext_resource type="Texture2D" uid="uid://bvgorgcbfeuv5" path="res://user_interface/inventory/inventory_panel.png" id="9_u7d1b"]
-[ext_resource type="Texture2D" uid="uid://bh4cm02y4xjvh" path="res://user_interface/inventory/slot/relic1.png" id="10_yq354"]
-[ext_resource type="Texture2D" uid="uid://bfyy3fkurhh5e" path="res://user_interface/inventory/slot/relic2.png" id="11_267y8"]
-[ext_resource type="Texture2D" uid="uid://bdqf0fx1f61oy" path="res://user_interface/inventory/slot/relic3.png" id="12_cictb"]
+[ext_resource type="Texture2D" uid="uid://bgyoqxmai0fb3" path="res://user_interface/inventory/slot/relic_slot.png" id="10_n1fhf"]
 [ext_resource type="Texture2D" uid="uid://ddfcx63y2wdw3" path="res://user_interface/inventory/slot/material_slot.png" id="15_t8mih"]
 [ext_resource type="Texture2D" uid="uid://dg5ldpwsob8vv" path="res://Sprite lfasd.png" id="16_afied"]
 
@@ -112,7 +111,7 @@ offset_bottom = 50.0
 text = "60"
 script = SubResource("GDScript_hf0g5")
 
-[node name="Inventory" type="Control" parent="Control" node_paths=PackedStringArray("armor_slots", "weapon_slots", "accessory_slots", "material_slots")]
+[node name="Inventory" type="Control" parent="Control" node_paths=PackedStringArray("armor_slots", "weapon_slots", "accessory_slots", "material_slots", "relic_slots")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -126,6 +125,7 @@ armor_slots = NodePath("Panel/PanelForSlots/ScrollContainer/Slots/ArmorSlots")
 weapon_slots = NodePath("Panel/PanelForSlots/ScrollContainer/Slots/WeaponSlots")
 accessory_slots = NodePath("Panel/PanelForSlots/ScrollContainer/Slots/AccessorySlots")
 material_slots = NodePath("Panel/ScrollContainer/MaterialSlots")
+relic_slots = NodePath("RelicSlots")
 
 [node name="ActiveSlots" type="HBoxContainer" parent="Control/Inventory"]
 layout_mode = 1
@@ -139,10 +139,9 @@ offset_bottom = -8.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Armor" parent="Control/Inventory/ActiveSlots" instance=ExtResource("5_haqhu")]
+[node name="Armor" parent="Control/Inventory/ActiveSlots" instance=ExtResource("6_fu35r")]
 layout_mode = 2
 deafult_icon = ExtResource("4_xufrg")
-show_item_amount = false
 
 [node name="Weapons" type="HBoxContainer" parent="Control/Inventory/ActiveSlots"]
 layout_mode = 2
@@ -150,15 +149,15 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = -1
 
-[node name="Weapon1" parent="Control/Inventory/ActiveSlots/Weapons" instance=ExtResource("5_haqhu")]
+[node name="Weapon1" parent="Control/Inventory/ActiveSlots/Weapons" instance=ExtResource("6_fu35r")]
 layout_mode = 2
+type = 1
 deafult_icon = ExtResource("6_hdeac")
-show_item_amount = false
 
-[node name="Weapon2" parent="Control/Inventory/ActiveSlots/Weapons" instance=ExtResource("5_haqhu")]
+[node name="Weapon2" parent="Control/Inventory/ActiveSlots/Weapons" instance=ExtResource("6_fu35r")]
 layout_mode = 2
+type = 1
 deafult_icon = ExtResource("6_hdeac")
-show_item_amount = false
 
 [node name="Accessories" type="HBoxContainer" parent="Control/Inventory/ActiveSlots"]
 layout_mode = 2
@@ -166,20 +165,20 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = -1
 
-[node name="Accessory1" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("5_haqhu")]
+[node name="Accessory1" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("6_fu35r")]
 layout_mode = 2
+type = 2
 deafult_icon = ExtResource("7_c6v5h")
-show_item_amount = false
 
-[node name="Accessory2" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("5_haqhu")]
+[node name="Accessory2" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("6_fu35r")]
 layout_mode = 2
+type = 2
 deafult_icon = ExtResource("7_c6v5h")
-show_item_amount = false
 
-[node name="Accessory3" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("5_haqhu")]
+[node name="Accessory3" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("6_fu35r")]
 layout_mode = 2
+type = 2
 deafult_icon = ExtResource("7_c6v5h")
-show_item_amount = false
 
 [node name="RelicSlots" type="HBoxContainer" parent="Control/Inventory"]
 layout_mode = 1
@@ -194,35 +193,11 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="Relic" type="TextureRect" parent="Control/Inventory/RelicSlots"]
+[node name="Relic" parent="Control/Inventory/RelicSlots" instance=ExtResource("5_haqhu")]
 layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 0
-texture = ExtResource("10_yq354")
-
-[node name="Relic2" type="TextureRect" parent="Control/Inventory/RelicSlots"]
-layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 0
-texture = ExtResource("11_267y8")
-
-[node name="Relic3" type="TextureRect" parent="Control/Inventory/RelicSlots"]
-layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 0
-texture = ExtResource("11_267y8")
-
-[node name="Relic4" type="TextureRect" parent="Control/Inventory/RelicSlots"]
-layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 0
-texture = ExtResource("12_cictb")
-
-[node name="Relic5" type="TextureRect" parent="Control/Inventory/RelicSlots"]
-layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 0
-texture = ExtResource("12_cictb")
+texture = ExtResource("10_n1fhf")
+show_item_amount = false
+can_be_dragged = false
 
 [node name="Panel" type="NinePatchRect" parent="Control/Inventory"]
 layout_mode = 1
@@ -230,9 +205,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -270.0
-offset_top = -322.0
+offset_top = 38.0
 offset_right = -8.0
-offset_bottom = -71.0
+offset_bottom = 289.0
 grow_vertical = 0
 texture = ExtResource("9_u7d1b")
 region_rect = Rect2(0, 0, 245, 83)
@@ -331,10 +306,10 @@ texture = ExtResource("15_t8mih")
 
 [node name="DraggedItemIcon" type="TextureRect" parent="Control/Inventory"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = 5.0
-offset_right = -6.0
-offset_bottom = 49.0
+offset_left = -67.0
+offset_top = -28.0
+offset_right = -17.0
+offset_bottom = 22.0
 mouse_filter = 2
 stretch_mode = 3
 

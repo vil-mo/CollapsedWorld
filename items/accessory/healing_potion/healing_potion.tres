@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://c7ltvk2mdy7re"]
+
+[ext_resource type="Texture2D" uid="uid://by161qf7gllic" path="res://items/accessory/healing_potion/healing_potion_icon.png" id="1_3spuf"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_vxjnl"]
+
+[resource]
+script = ExtResource("2_vxjnl")
+key = "healing_potion"
+item_type = 2
+icon = ExtResource("1_3spuf")
+grounded_sprite = ExtResource("1_3spuf")
+ui_name = "Healing Potion"
+ui_description = "Heals you
+"

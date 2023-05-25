@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://cfduljtn3qiht"]
+
+[ext_resource type="Texture2D" uid="uid://bdqf0fx1f61oy" path="res://items/relic/coin/coin_icon.png" id="1_2hufu"]
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_ud1x7"]
+
+[resource]
+script = ExtResource("2_ud1x7")
+key = "coin_test_relic"
+item_type = 3
+icon = ExtResource("1_2hufu")
+grounded_sprite = ExtResource("1_2hufu")
+ui_name = "Coin relic"
+ui_description = "just tesitng"
