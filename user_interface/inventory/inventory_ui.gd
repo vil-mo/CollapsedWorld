@@ -7,10 +7,20 @@ class_name InventoryUI
 @export var material_slots : Control
 @export var relic_slots : Control
 
+@export var equipment_armor_slots : Control
+@export var equipment_weapon_slots : Control
+@export var equipment_accessory_slots : Control
+
 @onready var dragged_item_icon : TextureRect = $DraggedItemIcon
 const DRAGGED_ITEM_ICON_OFFSET = Vector2(-25, -25)
 
 var dragged_slot : SlotUI = null
+var is_open := false
+var player_inventory : Inventory
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	player_inventory = GameManager.player.inventory
 
 func _input(event: InputEvent) -> void:
 	if dragged_slot && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
@@ -30,7 +40,9 @@ func stop_dragging_slot():
 	dragged_slot = null
 	dragged_item_icon.texture = null
 
-func update_slots(type, array : Array):
+func update_slots(type):
+	var array = player_inventory.items[type]
+	
 	var slots_parent : Control
 	
 	match type:
@@ -62,7 +74,29 @@ func update_slots(type, array : Array):
 		else:
 			slots[i].remove_item()
 
+func update_equiped_items():
+	var equiped = player_inventory.equiped
+	for type in equiped.keys():
+		var slots_parent
+		match type:
+			ItemKey.ITEM_TYPE.ARMOR:
+				slots_parent = equipment_armor_slots
+			ItemKey.ITEM_TYPE.WEAPON:
+				slots_parent = equipment_weapon_slots
+			ItemKey.ITEM_TYPE.ACCESSORY:
+				slots_parent = equipment_accessory_slots
+		var slots = slots_parent.get_children()
+		for i in equiped[type].size():
+			if equiped[type][i]:
+				slots[i].store_item(equiped[type][i])
+			else:
+				slots[i].remove_item()
+
+func eqip_item_in_slot(from_slot : SlotUI, to_slot : SlotUI):
+	pass
+
 func swap_slot_items(slot1 : SlotUI, slot2 : SlotUI):
+	assert(slot1.type == slot2.type, "Slots of different type tryed to be swaped")
 	var item1 = slot1.stored_item
 	var item2 = slot2.stored_item
 	
@@ -74,3 +108,8 @@ func swap_slot_items(slot1 : SlotUI, slot2 : SlotUI):
 		slot2.store_item(item1)
 	else:
 		slot2.remove_item()
+	
+	if slot1 is InventorySlotUI:
+		player_inventory.swap_item_places(slot1.type, slot1.get_index(), slot2.get_index())
+	else:
+		player_inventory.swap_equiped_item_places(slot1.type, slot1.get_index(), slot2.get_index())

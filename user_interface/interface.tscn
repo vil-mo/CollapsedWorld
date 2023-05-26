@@ -111,7 +111,7 @@ offset_bottom = 50.0
 text = "60"
 script = SubResource("GDScript_hf0g5")
 
-[node name="Inventory" type="Control" parent="Control" node_paths=PackedStringArray("armor_slots", "weapon_slots", "accessory_slots", "material_slots", "relic_slots")]
+[node name="Inventory" type="Control" parent="Control" node_paths=PackedStringArray("armor_slots", "weapon_slots", "accessory_slots", "material_slots", "relic_slots", "equipment_armor_slots", "equipment_weapon_slots", "equipment_accessory_slots")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -126,8 +126,11 @@ weapon_slots = NodePath("Panel/PanelForSlots/ScrollContainer/Slots/WeaponSlots")
 accessory_slots = NodePath("Panel/PanelForSlots/ScrollContainer/Slots/AccessorySlots")
 material_slots = NodePath("Panel/ScrollContainer/MaterialSlots")
 relic_slots = NodePath("RelicSlots")
+equipment_armor_slots = NodePath("EquipmentSlots/Armor")
+equipment_weapon_slots = NodePath("EquipmentSlots/Weapons")
+equipment_accessory_slots = NodePath("EquipmentSlots/Accessories")
 
-[node name="ActiveSlots" type="HBoxContainer" parent="Control/Inventory"]
+[node name="EquipmentSlots" type="HBoxContainer" parent="Control/Inventory"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -139,46 +142,49 @@ offset_bottom = -8.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Armor" parent="Control/Inventory/ActiveSlots" instance=ExtResource("6_fu35r")]
+[node name="Armor" type="HBoxContainer" parent="Control/Inventory/EquipmentSlots"]
+layout_mode = 2
+
+[node name="Armor" parent="Control/Inventory/EquipmentSlots/Armor" instance=ExtResource("6_fu35r")]
 layout_mode = 2
 deafult_icon = ExtResource("4_xufrg")
 
-[node name="Weapons" type="HBoxContainer" parent="Control/Inventory/ActiveSlots"]
+[node name="Weapons" type="HBoxContainer" parent="Control/Inventory/EquipmentSlots"]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = -1
 
-[node name="Weapon1" parent="Control/Inventory/ActiveSlots/Weapons" instance=ExtResource("6_fu35r")]
+[node name="Weapon1" parent="Control/Inventory/EquipmentSlots/Weapons" instance=ExtResource("6_fu35r")]
 layout_mode = 2
-type = 1
 deafult_icon = ExtResource("6_hdeac")
+type = 1
 
-[node name="Weapon2" parent="Control/Inventory/ActiveSlots/Weapons" instance=ExtResource("6_fu35r")]
+[node name="Weapon2" parent="Control/Inventory/EquipmentSlots/Weapons" instance=ExtResource("6_fu35r")]
 layout_mode = 2
-type = 1
 deafult_icon = ExtResource("6_hdeac")
+type = 1
 
-[node name="Accessories" type="HBoxContainer" parent="Control/Inventory/ActiveSlots"]
+[node name="Accessories" type="HBoxContainer" parent="Control/Inventory/EquipmentSlots"]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = -1
 
-[node name="Accessory1" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("6_fu35r")]
+[node name="Accessory1" parent="Control/Inventory/EquipmentSlots/Accessories" instance=ExtResource("6_fu35r")]
 layout_mode = 2
-type = 2
 deafult_icon = ExtResource("7_c6v5h")
+type = 2
 
-[node name="Accessory2" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("6_fu35r")]
+[node name="Accessory2" parent="Control/Inventory/EquipmentSlots/Accessories" instance=ExtResource("6_fu35r")]
 layout_mode = 2
-type = 2
 deafult_icon = ExtResource("7_c6v5h")
+type = 2
 
-[node name="Accessory3" parent="Control/Inventory/ActiveSlots/Accessories" instance=ExtResource("6_fu35r")]
+[node name="Accessory3" parent="Control/Inventory/EquipmentSlots/Accessories" instance=ExtResource("6_fu35r")]
 layout_mode = 2
-type = 2
 deafult_icon = ExtResource("7_c6v5h")
+type = 2
 
 [node name="RelicSlots" type="HBoxContainer" parent="Control/Inventory"]
 layout_mode = 1
@@ -198,6 +204,7 @@ layout_mode = 2
 texture = ExtResource("10_n1fhf")
 show_item_amount = false
 can_be_dragged = false
+type = 3
 
 [node name="Panel" type="NinePatchRect" parent="Control/Inventory"]
 layout_mode = 1
@@ -269,6 +276,7 @@ columns = 7
 [node name="Weapon1" parent="Control/Inventory/Panel/PanelForSlots/ScrollContainer/Slots/WeaponSlots" instance=ExtResource("5_haqhu")]
 layout_mode = 2
 deafult_icon = ExtResource("6_hdeac")
+type = 1
 
 [node name="AccessorySlots" type="GridContainer" parent="Control/Inventory/Panel/PanelForSlots/ScrollContainer/Slots"]
 layout_mode = 2
@@ -278,6 +286,7 @@ columns = 7
 [node name="Accessory1" parent="Control/Inventory/Panel/PanelForSlots/ScrollContainer/Slots/AccessorySlots" instance=ExtResource("5_haqhu")]
 layout_mode = 2
 deafult_icon = ExtResource("7_c6v5h")
+type = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Inventory/Panel"]
 layout_mode = 1
@@ -303,6 +312,7 @@ theme_override_constants/h_separation = 2
 [node name="Material1" parent="Control/Inventory/Panel/ScrollContainer/MaterialSlots" instance=ExtResource("5_haqhu")]
 layout_mode = 2
 texture = ExtResource("15_t8mih")
+type = 4
 
 [node name="DraggedItemIcon" type="TextureRect" parent="Control/Inventory"]
 layout_mode = 0

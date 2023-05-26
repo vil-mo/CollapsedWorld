@@ -12,6 +12,8 @@ signal fell()
 func _ready() -> void:
 	super()
 	collectable_collector.area_entered.connect(collect)
+	
+
 
 func _physics_process(delta):
 	super(delta)
