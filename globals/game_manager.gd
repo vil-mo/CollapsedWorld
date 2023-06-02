@@ -2,18 +2,15 @@ extends Node
 
 # Z-indexes ===============
 # -100: backgrounnd
-# -10 : rooms floor
+# -10 : rooms ground
 # -5  : collectables
-# -1  : wheapons behind player
-# 0   : player
-# 1   : wheapons above player
+# 0   : ysort
 # 100 : interface
 # ============================
 
 const PlayerScene = preload("res://entity/playable_characters/playable_character.tscn")
 
 @onready var player : PlayableCharacter = PlayerScene.instantiate()
-var room_manager : RoomManager
 
 var ITEMS_KEY_INFORMATION := {}
 

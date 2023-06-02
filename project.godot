@@ -24,7 +24,6 @@ FallenEntitiesManager="*res://globals/fallen_entities_manager.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
@@ -85,6 +84,7 @@ open_inventory={
 [layer_names]
 
 2d_physics/layer_1="Entity"
+2d_navigation/layer_1="Ground"
 2d_physics/layer_2="Projectile"
 2d_physics/layer_3="Ground"
 2d_physics/layer_4="Walls"

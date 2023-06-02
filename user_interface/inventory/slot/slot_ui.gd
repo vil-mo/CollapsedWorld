@@ -5,7 +5,7 @@ class_name SlotUI
 @export var type : ItemKey.ITEM_TYPE
 
 @onready var icon : TextureRect = $Icon
-var inventory_ui : InventoryUI
+@onready var inventory_ui : InventoryUI = owner
 
 var stored_item : ItemKey = null
 
@@ -15,9 +15,6 @@ const DRAGGED_COLOR = Color(0.5, 0.5, 0.5)
 func _ready() -> void:
 	modulate = NORMAL_COLOR
 	icon.texture = deafult_icon
-	
-	await get_tree().physics_frame
-	inventory_ui = GameManager.room_manager.interface.inventory
 
 func set_dragging(val : bool):
 	if val:

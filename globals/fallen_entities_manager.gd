@@ -24,6 +24,6 @@ func drop_entity(entity : Entity, in_point : Vector2 = Vector2.INF):
 	room_manager.add_instance(effect)
 	await get_tree().create_timer(effect.get_meta("time_to_end", 1)).timeout
 	effect.queue_free()
-	entity.global_position = in_point
-	room_manager.add_instance(entity)
 	
+	room_manager.add_instance(entity)
+	entity.global_position = in_point

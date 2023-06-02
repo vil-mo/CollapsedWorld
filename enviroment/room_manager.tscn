@@ -1,12 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjqmtik2btkch"]
+[gd_scene load_steps=9 format=3 uid="uid://cjqmtik2btkch"]
 
 [ext_resource type="Texture2D" uid="uid://djytry0x3uqih" path="res://enviroment/background/background.png" id="1"]
 [ext_resource type="Script" path="res://enviroment/room_manager.gd" id="2"]
+[ext_resource type="Script" path="res://enviroment/generation/generation_conditions.gd" id="2_4p151"]
 [ext_resource type="Script" path="res://enviroment/camera.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://dsh1skr0gan23" path="res://user_interface/interface.tscn" id="4_2ck2r"]
+[ext_resource type="PackedScene" uid="uid://yvoy1p4xc3ok" path="res://enviroment/generation/room_generation.tscn" id="4_e065x"]
+
+[sub_resource type="Resource" id="Resource_06vkd"]
+script = ExtResource("2_4p151")
+stage = 1
+biome = 0
+size = Vector2i(20, 20)
+holes_amount = 3
+initial_ground_removing_amount = 4
+initial_ground_chance_to_be_removed = 0.17
+walls_amount = 3
+walls_neghbor_amount = 4
+walls_expanding_amount = 1
+walls_chance_to_be_expanded = 0.2
+should_connect_land = true
+connecting_land_connection_wideness = 1.0
+
+[sub_resource type="Resource" id="Resource_81xbo"]
+script = ExtResource("2_4p151")
+stage = 1
+biome = 1
+size = Vector2i(20, 20)
+holes_amount = 3
+initial_ground_removing_amount = 4
+initial_ground_chance_to_be_removed = 0.17
+walls_amount = 3
+walls_neghbor_amount = 4
+walls_expanding_amount = 1
+walls_chance_to_be_expanded = 0.2
+should_connect_land = true
+connecting_land_connection_wideness = 1.0
 
 [node name="RoomManager" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("2")
+forest_conditions = SubResource("Resource_06vkd")
+snow_conditions = SubResource("Resource_81xbo")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -100
@@ -22,5 +57,10 @@ centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3")
+
+[node name="Room" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="RoomGeneration" parent="Room" instance=ExtResource("4_e065x")]
 
 [node name="Interface" parent="." instance=ExtResource("4_2ck2r")]

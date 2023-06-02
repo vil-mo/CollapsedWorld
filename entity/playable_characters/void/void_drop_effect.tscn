@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://0r1ke6do58tp"]
 
 [ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/playable_characters/void/void_default.png" id="1_hjjgv"]
 
@@ -27,7 +27,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2, 1),
+"transitions": PackedFloat32Array(3.605, 1),
 "update": 0,
 "values": [Vector2(0, -360), Vector2(0, -8)]
 }

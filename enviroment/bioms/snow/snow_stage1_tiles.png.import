@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8lmkjg6fmrgu"
-path="res://.godot/imported/ground2.png-ef53753976df69cd3f8f76fbe348e358.ctex"
+uid="uid://bbxkjjot8knwn"
+path="res://.godot/imported/snow_stage1_tiles.png-5c6648082fdc8ef79b908dfe4418f96b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rooms/test/ground2.png"
-dest_files=["res://.godot/imported/ground2.png-ef53753976df69cd3f8f76fbe348e358.ctex"]
+source_file="res://enviroment/bioms/snow/snow_stage1_tiles.png"
+dest_files=["res://.godot/imported/snow_stage1_tiles.png-5c6648082fdc8ef79b908dfe4418f96b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rfcfylr0w123"
-path="res://.godot/imported/ground1.png-84368f43bf6484126e57cdf5e0765d26.ctex"
+uid="uid://b41s0gfb5i7tq"
+path="res://.godot/imported/forest_stage1_tiles.png-159a031c86cb31f51a5c47c480434050.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rooms/test/ground1.png"
-dest_files=["res://.godot/imported/ground1.png-84368f43bf6484126e57cdf5e0765d26.ctex"]
+source_file="res://enviroment/bioms/forest/forest_stage1_tiles.png"
+dest_files=["res://.godot/imported/forest_stage1_tiles.png-159a031c86cb31f51a5c47c480434050.ctex"]
 
 [params]
 

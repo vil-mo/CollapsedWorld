@@ -11,6 +11,7 @@ class_name InventoryUI
 @export var equipment_weapon_slots : Control
 @export var equipment_accessory_slots : Control
 
+@onready var panel : Control = $Panel
 @onready var dragged_item_icon : TextureRect = $DraggedItemIcon
 const DRAGGED_ITEM_ICON_OFFSET = Vector2(-25, -25)
 
@@ -64,8 +65,11 @@ func update_slots(type):
 		slots_parent.get_child(current_slot_amount - 1).queue_free()
 		current_slot_amount -= 1
 	while current_slot_amount < wanted_slot_amount:
-		slots_parent.add_child(slots_parent.get_child(current_slot_amount - 1).duplicate())
+		var duplicated = slots_parent.get_child(current_slot_amount - 1).duplicate()
+		duplicated.set_deferred("inventory_ui", self)
+		slots_parent.add_child(duplicated)
 		current_slot_amount += 1
+		
 	
 	var slots = slots_parent.get_children()
 	for i in current_slot_amount:
@@ -113,3 +117,25 @@ func swap_slot_items(slot1 : SlotUI, slot2 : SlotUI):
 		player_inventory.swap_item_places(slot1.type, slot1.get_index(), slot2.get_index())
 	else:
 		player_inventory.swap_equiped_item_places(slot1.type, slot1.get_index(), slot2.get_index())
+
+func open():
+	is_open = true
+	
+	panel.position = Vector2(-270, 38)
+	var tween : Tween = create_tween()
+	tween.set_trans(Tween.TRANS_BOUNCE)\
+	.set_ease(Tween.EASE_OUT)\
+	.tween_property(panel, "position", Vector2(0, 38), 0.9)
+	#tween.set_ease(Tween.EASE_OUT)\
+	#.tween_property(panel, "position", Vector2(-30, 38), 0.2)
+	#tween.set_ease(Tween.EASE_IN)\
+	#.tween_property(panel, "position", Vector2(0, 38), 0.5)
+
+func close():
+	is_open = false
+	
+	panel.position = Vector2(0, 38)
+	var tween : Tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)\
+	.set_ease(Tween.EASE_IN)\
+	.tween_property(panel, "position", Vector2(-270, 38), 0.4)

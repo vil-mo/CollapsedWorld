@@ -33,7 +33,7 @@ height = 8.0
 size = Vector2(1.5, 1.5625)
 
 [node name="Entity" type="CharacterBody2D"]
-z_index = 1
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_djo1o")
@@ -42,6 +42,7 @@ stats = SubResource("Resource_3x724")
 alignments = 2
 
 [node name="Visuals" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Shade" type="Sprite2D" parent="Visuals"]
 modulate = Color(1, 1, 1, 0.501961)
@@ -50,9 +51,11 @@ position = Vector2(0, 1)
 texture = ExtResource("3_2hj4w")
 
 [node name="Sprite" type="Node2D" parent="Visuals"]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_kapcq")
 
 [node name="Torso" type="Sprite2D" parent="Visuals/Sprite"]
+y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, -8)
 texture = ExtResource("4_dpxq3")

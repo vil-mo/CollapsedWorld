@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvoy1p4xc3ok"]
+
+[ext_resource type="TileSet" uid="uid://golflxjuvtut" path="res://enviroment/generation/room_tileset.tres" id="1_x674e"]
+[ext_resource type="Script" path="res://enviroment/generation/room_generation.gd" id="2_w4adk"]
+
+[node name="RoomGeneration" type="TileMap"]
+y_sort_enabled = true
+tile_set = ExtResource("1_x674e")
+format = 2
+layer_0/name = "Base"
+layer_0/enabled = false
+layer_0/z_index = -5
+layer_1/name = "Ground"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = -10
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Walls"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = true
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("2_w4adk")
