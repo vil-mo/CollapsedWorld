@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://dc5d52hmkafs2"]
+
+[ext_resource type="Script" path="res://items/item_key.gd" id="2_b0us2"]
+[ext_resource type="Texture2D" uid="uid://d105midn1vokt" path="res://items/currency/coins/coins_icon.png" id="2_fupfa"]
+
+[resource]
+script = ExtResource("2_b0us2")
+key = "coins"
+item_type = 5
+icon = ExtResource("2_fupfa")
+grounded_sprite = ExtResource("2_fupfa")
+ui_name = "Coins"
+ui_description = "Can be wasted on useless stuff"

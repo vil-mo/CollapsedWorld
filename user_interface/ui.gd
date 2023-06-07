@@ -1,17 +1,13 @@
 extends CanvasLayer
 
-@onready var inventory := $Control/Inventory
+var is_inventory_open := false
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_inventory"):
-		if inventory.is_open:
-			close_inventory()
+		if is_inventory_open:
+			EventBus.ui_close_inventory.emit()
+			is_inventory_open = false
 		else:
-			open_inventory()
+			EventBus.ui_open_inventory.emit()
+			is_inventory_open = true
 
-
-func open_inventory():
-	inventory.open()
-
-func close_inventory():
-	inventory.close()

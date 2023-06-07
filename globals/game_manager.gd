@@ -2,9 +2,13 @@ extends Node
 
 # Z-indexes ===============
 # -100: backgrounnd
+# -12 : door bottom
 # -10 : rooms ground
 # -5  : collectables
+# -2  : door middle
+# -1  : shadows
 # 0   : ysort
+# 2   : door top
 # 100 : interface
 # ============================
 
@@ -17,9 +21,9 @@ var ITEMS_KEY_INFORMATION := {}
 func _init():
 	initialize_item_keys("res://items/")
 
-func _ready() -> void:
-	await get_tree().physics_frame
-	FallenEntitiesManager.drop_entity(player)
+func drop_player():
+	if !player.is_inside_tree():
+		FallenEntitiesManager.drop_entity(player)
 
 func initialize_item_keys(in_directory : String):
 	var dir = DirAccess.open(in_directory)

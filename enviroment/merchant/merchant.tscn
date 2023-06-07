@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://qia1qjlk8oej"]
+
+[ext_resource type="Script" path="res://enviroment/merchant/merchant.gd" id="1_ml335"]
+[ext_resource type="Texture2D" uid="uid://dbrj1w7fq75oj" path="res://enviroment/merchant/trivia/trivia_merchant.png" id="2_63wnr"]
+
+[node name="Merchant" type="Node2D"]
+script = ExtResource("1_ml335")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_63wnr")
+vframes = 2

@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsh1skr0gan23"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Texture2D" uid="uid://b37reel68xoxe" path="res://user_interface/healthbar/under.png" id="1_pgfe6"]
 [ext_resource type="Script" path="res://user_interface/ui.gd" id="1_wf5xw"]
 [ext_resource type="Texture2D" uid="uid://crkfcdexr0vbt" path="res://user_interface/healthbar/over.png" id="2_r34pr"]
 [ext_resource type="Texture2D" uid="uid://cfltj8572hyat" path="res://user_interface/healthbar/progress.png" id="3_wr1ew"]
-[ext_resource type="PackedScene" uid="uid://qdqarmht048p" path="res://user_interface/inventory/inventory.tscn" id="5_bgwt6"]
+[ext_resource type="PackedScene" path="res://user_interface/tap_openers/inventory/inventory.tscn" id="5_bgwt6"]
 [ext_resource type="Texture2D" uid="uid://dg5ldpwsob8vv" path="res://Sprite lfasd.png" id="16_afied"]
 
 [sub_resource type="GDScript" id="GDScript_hf0g5"]

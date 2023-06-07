@@ -23,7 +23,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(5, 2)
+size = Vector2(8, 2)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0714k"]
 radius = 4.0
@@ -34,7 +34,7 @@ size = Vector2(1.5, 1.5625)
 
 [node name="Entity" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 0
+collision_layer = 64
 collision_mask = 8
 script = ExtResource("1_djo1o")
 fall_texture = ExtResource("2_i3tnm")
@@ -44,10 +44,9 @@ alignments = 2
 [node name="Visuals" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Shade" type="Sprite2D" parent="Visuals"]
+[node name="Shadow" type="Sprite2D" parent="Visuals"]
 modulate = Color(1, 1, 1, 0.501961)
-z_index = -2
-position = Vector2(0, 1)
+y_sort_enabled = true
 texture = ExtResource("3_2hj4w")
 
 [node name="Sprite" type="Node2D" parent="Visuals"]
@@ -57,14 +56,16 @@ material = SubResource("ShaderMaterial_kapcq")
 [node name="Torso" type="Sprite2D" parent="Visuals/Sprite"]
 y_sort_enabled = true
 use_parent_material = true
-position = Vector2(0, -8)
 texture = ExtResource("4_dpxq3")
+offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 z_index = 100
 shape = SubResource("1")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 z_index = 100
 collision_mask = 0
 
@@ -74,6 +75,7 @@ shape = SubResource("CapsuleShape2D_0714k")
 debug_color = Color(0.87451, 0, 0.0588235, 0.419608)
 
 [node name="GroundDetector" type="Area2D" parent="."]
+visible = false
 z_index = 100
 collision_layer = 0
 collision_mask = 4

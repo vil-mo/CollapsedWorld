@@ -10,17 +10,20 @@ var is_following := false
 var followed_node : Node2D = null
 var is_allowed_to_move_camera_width_mouse := false
 
-func follow_node(val : bool, node_to_follow : Node2D = null, allowed_to_move_camera_width_mouse : bool = false):
-	is_following = val
+func follow_node(node_to_follow : Node2D = null, allowed_to_move_camera_width_mouse : bool = true):
 	followed_node = node_to_follow
+	if node_to_follow:
+		is_following = true
+	else:
+		is_following = false
 	is_allowed_to_move_camera_width_mouse = allowed_to_move_camera_width_mouse
 
 func _physics_process(delta):
-	if followed_node.is_inside_tree():
+	if followed_node && followed_node.is_inside_tree():
 		target_point = followed_node.global_position
 		target_zoom = default_zoom
 	else:
-		target_point = Vector2(190, 170)
+		target_point = Vector2(150, 170)
 		target_zoom = 1.0
 	
 	

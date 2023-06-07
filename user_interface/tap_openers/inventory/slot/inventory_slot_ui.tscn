@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmx62df17tklp"]
+
+[ext_resource type="Texture2D" uid="uid://dn7cyhuexv7r6" path="res://user_interface/tap_openers/inventory/slot/slot.png" id="1_1t3n7"]
+[ext_resource type="Script" path="res://user_interface/tap_openers/inventory/slot/inventory_slot_ui.gd" id="2_uc5pi"]
+
+[node name="InventorySlotUI" type="TextureRect"]
+offset_right = 19.0
+offset_bottom = 20.0
+mouse_filter = 0
+texture = ExtResource("1_1t3n7")
+stretch_mode = 2
+script = ExtResource("2_uc5pi")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 21.0
+offset_bottom = 22.0
+mouse_filter = 2
+stretch_mode = 2
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -18.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "23"
+horizontal_alignment = 2
+vertical_alignment = 2

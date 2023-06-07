@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MerchantResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://enviroment/merchant/merchant_resource.gd" id="1_6xpoa"]
+[ext_resource type="Texture2D" uid="uid://dbrj1w7fq75oj" path="res://enviroment/merchant/trivia/trivia_merchant.png" id="2_trltg"]
+
+[resource]
+script = ExtResource("1_6xpoa")
+sprite = ExtResource("2_trltg")
+merchant_menus = Array[Resource("res://enviroment/progression_objects/merchant/merchant_menu.gd")]([])

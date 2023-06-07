@@ -4,31 +4,60 @@ class_name RoomManager
 var room_area : Array[PackedVector2Array] = []
 
 @onready var room : Node2D = $Room
+@onready var instances : Node2D = $Room/Instances
 @onready var camera : Camera2D = $Camera2D
 @onready var room_generation : RoomGeneration = $Room/RoomGeneration
 @onready var interface = $Interface
 
-var current_room_number
-
+var current_room_number := 0
 
 const Bulle = preload("res://projectiles/test_projectile/test_projectile.tscn")
 
-@export var forest_conditions : GenerationConditions
-@export var snow_conditions : GenerationConditions
+var conditions : GenerationConditions = GenerationConditions.new()
 
 func _ready():
 	FallenEntitiesManager.room_manager = self
+	EventBus.player_entered_door.connect(on_player_entered_door)
 	
-	create_room(forest_conditions)
-	
-	camera.follow_node(true, GameManager.player, true)
+	next_room(GenerationConditions.BIOMS.FOREST)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
-		create_room(snow_conditions if randf() < 0.5 else forest_conditions)
+		EventBus.player_beat_room.emit()
 
-func next_room():
-	pass
+func on_player_entered_door(biome : GenerationConditions.BIOMS):
+	next_room(biome)
+
+func next_room(biome : GenerationConditions.BIOMS):
+	camera.follow_node(null)
+	conditions.biome = biome
+	
+	if current_room_number > 0:
+		room.position.y = 0
+		
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_IN)\
+		.set_trans(Tween.TRANS_EXPO)\
+		.tween_property(room, "position:y", -720, 1)
+		await tween.finished
+		
+		remove_room()
+	
+	if GameManager.player.is_inside_tree():
+		remove_instance(GameManager.player)
+	
+	create_room(conditions)
+	
+	room.position.y = 720
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)\
+	.set_trans(Tween.TRANS_SINE)\
+	.tween_property(room, "position:y", 0, 1)
+	
+	await tween.finished
+	camera.follow_node(GameManager.player)
+	current_room_number += 1
+	GameManager.drop_player()
 
 func create_room(conditions : GenerationConditions):
 	
@@ -49,12 +78,17 @@ func remove_room():
 	room_generation.remove_room()
 
 func add_instance(instance : Node2D):
-	room.add_child(instance)
+	instances.add_child(instance)
+
+func remove_instance(instance : Node2D):
+	instances.remove_child(instance)
 
 func get_random_point() -> Vector2:
 	return GameManager.get_random_point_in_several_polygons(room_area)
 
-
+func free_all_instances():
+	for instance in instances.get_children():
+		instance.queue_free()
 
 
 

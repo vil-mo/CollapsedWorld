@@ -11,7 +11,8 @@ const BIOM_ROOM_TILE_TEXTURES = {
 
 @export var stage : int = 1
 @export var biome : BIOMS = BIOMS.FOREST
-@export var merchant : Resource = null
+@export var doors_amount : int = 2
+@export var merchant : MerchantResource = preload("res://enviroment/merchant/trivia/trivia_merchant.tres")
 
 @export var size := Vector2i(20, 20)
 @export var holes_amount : int = 3

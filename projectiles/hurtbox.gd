@@ -20,6 +20,6 @@ func append_to_already_hitted(entity : Entity) -> void:
 	await get_tree().create_timer(time_before_can_hit_entity_again).timeout
 	already_hitted_entities.erase(entity)
 
-func set_attack_values(attack : Attack):
-	attack.projectile = owner
-	attack.emitter = owner.emitter
+func set_attack_values(to_attack : Attack):
+	to_attack.projectile = owner
+	to_attack.emitter = owner.emitter

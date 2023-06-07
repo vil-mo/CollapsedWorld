@@ -1,7 +1,7 @@
 extends Resource
 class_name ItemKey
 
-enum ITEM_TYPE {ARMOR, WEAPON, ACCESSORY, RELIC, MATERIAL}
+enum ITEM_TYPE {ARMOR, WEAPON, ACCESSORY, RELIC, MATERIAL, CURRENCY}
 
 @export var key : String
 @export var item_type : ITEM_TYPE

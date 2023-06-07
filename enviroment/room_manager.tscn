@@ -1,47 +1,121 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjqmtik2btkch"]
+[gd_scene load_steps=38 format=3 uid="uid://cjqmtik2btkch"]
 
 [ext_resource type="Texture2D" uid="uid://djytry0x3uqih" path="res://enviroment/background/background.png" id="1"]
 [ext_resource type="Script" path="res://enviroment/room_manager.gd" id="2"]
-[ext_resource type="Script" path="res://enviroment/generation/generation_conditions.gd" id="2_4p151"]
 [ext_resource type="Script" path="res://enviroment/camera.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://dsh1skr0gan23" path="res://user_interface/interface.tscn" id="4_2ck2r"]
+[ext_resource type="PackedScene" path="res://user_interface/interface.tscn" id="4_2ck2r"]
 [ext_resource type="PackedScene" uid="uid://yvoy1p4xc3ok" path="res://enviroment/generation/room_generation.tscn" id="4_e065x"]
+[ext_resource type="PackedScene" uid="uid://lamuc7f5ghun" path="res://other/collectable/collectable.tscn" id="5_jhc2w"]
+[ext_resource type="Resource" uid="uid://dc5d52hmkafs2" path="res://items/currency/coins/coins.tres" id="6_djluh"]
+[ext_resource type="Script" path="res://other/collectable/collectable_data/item_collectable_data.gd" id="7_71qnx"]
+[ext_resource type="Resource" uid="uid://c7ltvk2mdy7re" path="res://items/accessory/healing_potion/healing_potion.tres" id="9_xvhy8"]
+[ext_resource type="Resource" uid="uid://dn8pnwiys1ctp" path="res://items/accessory/hermes_boots/hermes_boots.tres" id="10_btgt6"]
+[ext_resource type="Resource" uid="uid://d1mb3xige11jh" path="res://items/accessory/ring/ring.tres" id="11_8qlmc"]
+[ext_resource type="Resource" uid="uid://dasrcq64kx0nq" path="res://items/armor/ice_armor/key_ice_armor.tres" id="12_2hlvt"]
+[ext_resource type="Resource" uid="uid://bombvgpj2e1r6" path="res://items/armor/iron_armor/iron_armor.tres" id="13_eop1m"]
+[ext_resource type="Resource" uid="uid://d0sgtlywr2pvi" path="res://items/material/cog/key_cog.tres" id="14_yryni"]
+[ext_resource type="Resource" uid="uid://5see42nfbqql" path="res://items/material/gold/key_gold.tres" id="15_iuwmd"]
+[ext_resource type="Resource" uid="uid://xg4sd5smg1ve" path="res://items/material/leaf/key_leaf.tres" id="16_e3fpv"]
+[ext_resource type="Resource" uid="uid://i36h1myr5kjo" path="res://items/material/wood/key_wood.tres" id="17_du4et"]
+[ext_resource type="Resource" uid="uid://cfduljtn3qiht" path="res://items/relic/coin/coin.tres" id="18_aadls"]
+[ext_resource type="Resource" uid="uid://ubdhigqiw85l" path="res://items/relic/fire/fire.tres" id="19_xdgg7"]
+[ext_resource type="Resource" uid="uid://e2qu8hfki25o" path="res://items/relic/ice/ice.tres" id="20_1j8lb"]
+[ext_resource type="Resource" uid="uid://o3rrh4fcw0xn" path="res://items/weapon/iron_sword/iron_sword.tres" id="21_7ljlr"]
+[ext_resource type="Resource" path="res://items/weapon/shadow_sword/shadow_sword.tres" id="22_4hnw5"]
 
-[sub_resource type="Resource" id="Resource_06vkd"]
-script = ExtResource("2_4p151")
-stage = 1
-biome = 0
-size = Vector2i(20, 20)
-holes_amount = 3
-initial_ground_removing_amount = 4
-initial_ground_chance_to_be_removed = 0.17
-walls_amount = 3
-walls_neghbor_amount = 4
-walls_expanding_amount = 1
-walls_chance_to_be_expanded = 0.2
-should_connect_land = true
-connecting_land_connection_wideness = 1.0
+[sub_resource type="Resource" id="Resource_q3lai"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("6_djluh")
+min_amount = 10
+max_amount = 100
 
-[sub_resource type="Resource" id="Resource_81xbo"]
-script = ExtResource("2_4p151")
-stage = 1
-biome = 1
-size = Vector2i(20, 20)
-holes_amount = 3
-initial_ground_removing_amount = 4
-initial_ground_chance_to_be_removed = 0.17
-walls_amount = 3
-walls_neghbor_amount = 4
-walls_expanding_amount = 1
-walls_chance_to_be_expanded = 0.2
-should_connect_land = true
-connecting_land_connection_wideness = 1.0
+[sub_resource type="Resource" id="Resource_i5q5l"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("9_xvhy8")
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_op3xa"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("10_btgt6")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_m4quv"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("11_8qlmc")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_gfjvt"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("12_2hlvt")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_tfb34"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("13_eop1m")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_wb460"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("14_yryni")
+min_amount = 4
+max_amount = 7
+
+[sub_resource type="Resource" id="Resource_5fack"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("15_iuwmd")
+min_amount = 2
+max_amount = 7
+
+[sub_resource type="Resource" id="Resource_xhodn"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("16_e3fpv")
+min_amount = 7
+max_amount = 60
+
+[sub_resource type="Resource" id="Resource_hhby3"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("17_du4et")
+min_amount = 245
+max_amount = 646
+
+[sub_resource type="Resource" id="Resource_t8ux8"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("18_aadls")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_d1bgi"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("19_xdgg7")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_nixsk"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("20_1j8lb")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_lbtnf"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("21_7ljlr")
+min_amount = 1
+max_amount = -1
+
+[sub_resource type="Resource" id="Resource_lobka"]
+script = ExtResource("7_71qnx")
+item_key = ExtResource("22_4hnw5")
+min_amount = 1
+max_amount = -1
 
 [node name="RoomManager" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("2")
-forest_conditions = SubResource("Resource_06vkd")
-snow_conditions = SubResource("Resource_81xbo")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -100
@@ -63,4 +137,67 @@ y_sort_enabled = true
 
 [node name="RoomGeneration" parent="Room" instance=ExtResource("4_e065x")]
 
+[node name="Instances" type="Node2D" parent="Room"]
+y_sort_enabled = true
+
+[node name="Collectable" parent="Room" instance=ExtResource("5_jhc2w")]
+position = Vector2(481, 239)
+collectable_data = SubResource("Resource_q3lai")
+
 [node name="Interface" parent="." instance=ExtResource("4_2ck2r")]
+
+[node name="Collectable" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(533, 210)
+collectable_data = SubResource("Resource_i5q5l")
+
+[node name="Collectable2" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(548, 286)
+collectable_data = SubResource("Resource_op3xa")
+
+[node name="Collectable3" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(565, 246)
+collectable_data = SubResource("Resource_m4quv")
+
+[node name="Collectable4" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(568, 197)
+collectable_data = SubResource("Resource_gfjvt")
+
+[node name="Collectable5" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(569, 153)
+collectable_data = SubResource("Resource_tfb34")
+
+[node name="Collectable6" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(576, 119)
+collectable_data = SubResource("Resource_wb460")
+
+[node name="Collectable7" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(576, 90)
+collectable_data = SubResource("Resource_5fack")
+
+[node name="Collectable8" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(577, 69)
+collectable_data = SubResource("Resource_xhodn")
+
+[node name="Collectable9" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(577, 31)
+collectable_data = SubResource("Resource_hhby3")
+
+[node name="Collectable10" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(580, 3)
+collectable_data = SubResource("Resource_t8ux8")
+
+[node name="Collectable11" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(608, 3)
+collectable_data = SubResource("Resource_d1bgi")
+
+[node name="Collectable12" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(611, 41)
+collectable_data = SubResource("Resource_nixsk")
+
+[node name="Collectable13" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(610, 68)
+collectable_data = SubResource("Resource_lbtnf")
+
+[node name="Collectable14" parent="." instance=ExtResource("5_jhc2w")]
+position = Vector2(611, 104)
+collectable_data = SubResource("Resource_lobka")
