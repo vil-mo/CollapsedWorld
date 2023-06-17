@@ -1,14 +1,42 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://dn8pnwiys1ctp"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=12 format=3 uid="uid://3t83ha87qiib"]
 
 [ext_resource type="Texture2D" uid="uid://conip40ydu8k3" path="res://items/accessory/hermes_boots/hermes_boots_icon.png" id="1_uiqgf"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_1e8jg"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_1e8jg"]
+[ext_resource type="Resource" uid="uid://dysawxe3mb68q" path="res://items/accessory/healing_potion/healing_potion.tres" id="2_wk0ut"]
+[ext_resource type="Script" path="res://other/recipe.gd" id="3_uq2gb"]
+[ext_resource type="Resource" uid="uid://bd8s07j5si8jm" path="res://items/material/leaf/key_leaf.tres" id="4_fp2eu"]
+[ext_resource type="Resource" uid="uid://do8xah1mxyx8j" path="res://items/material/cog/key_cog.tres" id="5_5biwe"]
+[ext_resource type="Resource" uid="uid://c4xjqvboiupkg" path="res://items/material/coins/coins.tres" id="6_12rxk"]
+[ext_resource type="Resource" uid="uid://r4yp7iofvsqs" path="res://items/material/gold/key_gold.tres" id="7_e3u5n"]
+[ext_resource type="Resource" uid="uid://cwa1w8nvvk2pi" path="res://items/material/wood/key_wood.tres" id="8_yjq56"]
+
+[sub_resource type="Resource" id="Resource_q5ivc"]
+script = ExtResource("3_uq2gb")
+amount_crafted = 1
+ingridients = {
+ExtResource("2_wk0ut"): 1
+}
+
+[sub_resource type="Resource" id="Resource_6d7w2"]
+script = ExtResource("3_uq2gb")
+amount_crafted = 2
+ingridients = {
+ExtResource("4_fp2eu"): 3,
+ExtResource("5_5biwe"): 3,
+ExtResource("6_12rxk"): 3,
+ExtResource("7_e3u5n"): 3,
+ExtResource("8_yjq56"): 3
+}
 
 [resource]
 script = ExtResource("2_1e8jg")
 key = "hermes_boots"
 item_type = 2
-icon = ExtResource("1_uiqgf")
 grounded_sprite = ExtResource("1_uiqgf")
+progression_point = 50.0
+biome = 1
+recipes = Array[ExtResource("3_uq2gb")]([SubResource("Resource_q5ivc"), SubResource("Resource_6d7w2")])
+icon = ExtResource("1_uiqgf")
 ui_name = "Hermes Boots"
 ui_description = "Terraria referrence
 "

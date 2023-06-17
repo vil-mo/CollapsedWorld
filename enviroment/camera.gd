@@ -1,7 +1,7 @@
 extends Camera2D
 
 var camera_speed = 0.2
-var default_zoom = 2.0
+var default_zoom = 3
 var camera_moving_sensitivity := 10
 
 var target_point := Vector2.ZERO

@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://vcaiu2ky7614"]
+
+[ext_resource type="PackedScene" uid="uid://cdhdlegasj7uy" path="res://user_interface/slot/slot_ui.tscn" id="1_bn46g"]
+[ext_resource type="Texture2D" uid="uid://cd86o4qhr07vr" path="res://user_interface/slot/dragable_slot/equipment_slot/equipment_slot.png" id="1_irsc3"]
+[ext_resource type="Script" path="res://user_interface/slot/dragable_slot/equipment_slot/equipment_slot_ui.gd" id="2_u5mqy"]
+
+[node name="EquipmentSlotUI" instance=ExtResource("1_bn46g")]
+script = ExtResource("2_u5mqy")
+type = 0
+
+[node name="Frame" parent="." index="0"]
+texture = ExtResource("1_irsc3")

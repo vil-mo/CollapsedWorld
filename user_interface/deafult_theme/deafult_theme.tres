@@ -1,0 +1,105 @@
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dww0wjpetlryc"]
+
+[ext_resource type="Texture2D" uid="uid://d24ko71vu5fv0" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_offerings_pannel.png" id="1_nxsnc"]
+[ext_resource type="Texture2D" uid="uid://baqo0whmp7x7y" path="res://user_interface/deafult_theme/v_scroll_bar_grabber.png" id="1_tqeho"]
+[ext_resource type="Texture2D" uid="uid://8vq7jlfgsgv8" path="res://user_interface/deafult_theme/v_scroll_bar_scroll.png" id="2_03257"]
+[ext_resource type="Texture2D" uid="uid://dgtttd1hlbx1y" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_offerings_tab_selected.png" id="2_fkdm3"]
+[ext_resource type="Texture2D" uid="uid://c7u68uf6rm6jp" path="res://user_interface/deafult_theme/v_scroll_bar_grabber_highlight.png" id="2_smvtt"]
+[ext_resource type="Texture2D" uid="uid://dxus4d2huhqj5" path="res://user_interface/deafult_theme/v_scroll_bar_grabber_pressed.png" id="3_2fxdi"]
+[ext_resource type="Texture2D" uid="uid://c73i0fdiw573x" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_offerings_tab_unselected.png" id="3_46q10"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwabw"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_nxsnc")
+texture_margin_left = 8.1754
+texture_margin_top = 4.45931
+texture_margin_right = 4.90524
+texture_margin_bottom = 8.47268
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0j32"]
+content_margin_left = 7.0
+content_margin_top = 0.0
+content_margin_right = 12.0
+texture = ExtResource("2_fkdm3")
+texture_margin_left = 7.68487
+texture_margin_top = 11.2158
+texture_margin_right = 11.4456
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jcf5"]
+content_margin_left = 7.0
+content_margin_top = 0.0
+content_margin_right = 12.0
+texture = ExtResource("3_46q10")
+texture_margin_left = 20.0
+texture_margin_top = 13.0
+texture_margin_right = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fij7j"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+texture = ExtResource("1_tqeho")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+expand_margin_left = 3.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ee4p0"]
+texture = ExtResource("2_smvtt")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 7.0
+expand_margin_left = 3.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+expand_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 16, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_undu4"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("3_2fxdi")
+texture_margin_left = 5.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+expand_margin_left = 3.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ir41"]
+content_margin_left = 5.0
+content_margin_top = 0.0
+content_margin_right = 5.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_03257")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+expand_margin_right = 1.0
+expand_margin_bottom = 2.0
+
+[resource]
+TabContainer/colors/font_outline_color = Color(0, 0, 0, 1)
+TabContainer/constants/outline_size = 4
+TabContainer/constants/side_margin = 5
+TabContainer/styles/panel = SubResource("StyleBoxTexture_iwabw")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_t0j32")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_0jcf5")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_fij7j")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_ee4p0")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_undu4")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_4ir41")

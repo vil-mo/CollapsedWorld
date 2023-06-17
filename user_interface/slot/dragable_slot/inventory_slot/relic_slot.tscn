@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsojxrt822kg8"]
+
+[ext_resource type="PackedScene" uid="uid://dt0wynn1yg8j6" path="res://user_interface/slot/dragable_slot/inventory_slot/inventory_slot_ui.tscn" id="1_8cmfc"]
+[ext_resource type="Texture2D" uid="uid://bgyoqxmai0fb3" path="res://user_interface/slot/dragable_slot/inventory_slot/relic_slot.png" id="2_yfqno"]
+
+[node name="RelicSlot" instance=ExtResource("1_8cmfc")]
+offset_right = 19.0
+offset_bottom = 20.0
+texture = ExtResource("2_yfqno")
+show_item_amount = false
+can_be_dragged = false
+type = 3
+
+[node name="Frame" parent="." index="0"]
+offset_right = 19.0
+offset_bottom = 20.0
+texture = ExtResource("2_yfqno")
+
+[node name="Icon" parent="." index="1"]
+offset_left = -4.5
+offset_top = -4.0
+offset_right = 4.5
+offset_bottom = 4.0

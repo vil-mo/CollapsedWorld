@@ -1,0 +1,212 @@
+[gd_scene load_steps=11 format=3 uid="uid://csyi2nmma36jh"]
+
+[ext_resource type="Script" path="res://user_interface/opened_on_tab/inventory/inventory_ui.gd" id="1_qumvu"]
+[ext_resource type="PackedScene" uid="uid://vcaiu2ky7614" path="res://user_interface/slot/dragable_slot/equipment_slot/equipment_slot_ui.tscn" id="2_ww3yi"]
+[ext_resource type="Texture2D" uid="uid://cy8hymxcmpak7" path="res://user_interface/slot/armor_icon.png" id="3_2mkuk"]
+[ext_resource type="Texture2D" uid="uid://b82bxlsearoch" path="res://user_interface/slot/weapon_icon.png" id="4_p5os6"]
+[ext_resource type="Texture2D" uid="uid://be34osimts3qm" path="res://user_interface/slot/accessory_icon.png" id="5_4ayqk"]
+[ext_resource type="PackedScene" uid="uid://dsojxrt822kg8" path="res://user_interface/slot/dragable_slot/inventory_slot/relic_slot.tscn" id="6_e7pj2"]
+[ext_resource type="PackedScene" uid="uid://dt0wynn1yg8j6" path="res://user_interface/slot/dragable_slot/inventory_slot/inventory_slot_ui.tscn" id="6_si17g"]
+[ext_resource type="Texture2D" uid="uid://bvgorgcbfeuv5" path="res://user_interface/opened_on_tab/inventory/inventory_panel.png" id="8_abcjo"]
+[ext_resource type="Texture2D" uid="uid://bj0wbmnotfmhf" path="res://user_interface/opened_on_tab/inventory/inventory_panel_for_slots.png" id="9_rqh4o"]
+[ext_resource type="PackedScene" uid="uid://bwpl5nxv8pggg" path="res://user_interface/slot/dragable_slot/inventory_slot/material_slot.tscn" id="10_iyuwe"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_right = 320.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_qumvu")
+
+[node name="EquipmentSlots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -44.0
+offset_right = 187.0
+offset_bottom = -8.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Armor" type="HBoxContainer" parent="EquipmentSlots"]
+layout_mode = 2
+
+[node name="Armor" parent="EquipmentSlots/Armor" instance=ExtResource("2_ww3yi")]
+layout_mode = 2
+size_flags_vertical = 0
+deafult_icon = ExtResource("3_2mkuk")
+
+[node name="Weapons" type="HBoxContainer" parent="EquipmentSlots"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = -1
+
+[node name="Weapon1" parent="EquipmentSlots/Weapons" instance=ExtResource("2_ww3yi")]
+layout_mode = 2
+type = 1
+deafult_icon = ExtResource("4_p5os6")
+
+[node name="Weapon2" parent="EquipmentSlots/Weapons" instance=ExtResource("2_ww3yi")]
+layout_mode = 2
+type = 1
+deafult_icon = ExtResource("4_p5os6")
+
+[node name="Accessories" type="HBoxContainer" parent="EquipmentSlots"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = -1
+
+[node name="Accessory1" parent="EquipmentSlots/Accessories" instance=ExtResource("2_ww3yi")]
+layout_mode = 2
+type = 2
+deafult_icon = ExtResource("5_4ayqk")
+
+[node name="Accessory2" parent="EquipmentSlots/Accessories" instance=ExtResource("2_ww3yi")]
+layout_mode = 2
+type = 2
+deafult_icon = ExtResource("5_4ayqk")
+
+[node name="Accessory3" parent="EquipmentSlots/Accessories" instance=ExtResource("2_ww3yi")]
+layout_mode = 2
+type = 2
+deafult_icon = ExtResource("5_4ayqk")
+
+[node name="RelicSlots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -66.0
+offset_right = 187.0
+offset_bottom = -46.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="RelicSlot" parent="RelicSlots" instance=ExtResource("6_e7pj2")]
+layout_mode = 2
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -322.0
+offset_right = -8.0
+offset_bottom = -71.0
+grow_vertical = 0
+texture = ExtResource("8_abcjo")
+region_rect = Rect2(0, 0, 245, 83)
+patch_margin_left = 8
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="PanelForSlots" type="NinePatchRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -178.0
+offset_right = 255.0
+offset_bottom = -5.0
+grow_vertical = 0
+texture = ExtResource("9_rqh4o")
+region_rect = Rect2(0, 0, 236, 40)
+patch_margin_left = 8
+patch_margin_top = 30
+patch_margin_right = 16
+patch_margin_bottom = 32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/PanelForSlots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -81.5
+offset_right = 120.0
+offset_bottom = 80.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Slots" type="VBoxContainer" parent="Panel/PanelForSlots/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="ArmorSlots" type="GridContainer" parent="Panel/PanelForSlots/ScrollContainer/Slots"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+columns = 7
+
+[node name="Armor1" parent="Panel/PanelForSlots/ScrollContainer/Slots/ArmorSlots" instance=ExtResource("6_si17g")]
+layout_mode = 2
+deafult_icon = ExtResource("3_2mkuk")
+
+[node name="WeaponSlots" type="GridContainer" parent="Panel/PanelForSlots/ScrollContainer/Slots"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+columns = 7
+
+[node name="Weapon1" parent="Panel/PanelForSlots/ScrollContainer/Slots/WeaponSlots" instance=ExtResource("6_si17g")]
+layout_mode = 2
+type = 1
+deafult_icon = ExtResource("4_p5os6")
+
+[node name="AccessorySlots" type="GridContainer" parent="Panel/PanelForSlots/ScrollContainer/Slots"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+columns = 7
+
+[node name="Accessory1" parent="Panel/PanelForSlots/ScrollContainer/Slots/AccessorySlots" instance=ExtResource("6_si17g")]
+layout_mode = 2
+type = 2
+deafult_icon = ExtResource("5_4ayqk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -117.5
+offset_right = 111.0
+offset_bottom = -58.5
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="MaterialSlots" type="VFlowContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 2
+
+[node name="MaterialSlot" parent="Panel/ScrollContainer/MaterialSlots" instance=ExtResource("10_iyuwe")]
+layout_mode = 2
+
+[node name="DraggedItemIcon" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = -67.0
+offset_top = -28.0
+offset_right = -17.0
+offset_bottom = 22.0
+mouse_filter = 2
+stretch_mode = 3

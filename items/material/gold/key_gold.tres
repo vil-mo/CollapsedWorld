@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://5see42nfbqql"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://r4yp7iofvsqs"]
 
 [ext_resource type="Texture2D" uid="uid://d038oflgkq0u5" path="res://items/material/gold/gold_grounded.png" id="1_uq8lo"]
 [ext_resource type="Texture2D" uid="uid://r6vq0c0tboxy" path="res://items/material/gold/gold_icon.png" id="2_fxl8i"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_pgh3q"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_pgh3q"]
 
 [resource]
 script = ExtResource("2_pgh3q")
 key = "gold"
 item_type = 4
-icon = ExtResource("2_fxl8i")
 grounded_sprite = ExtResource("1_uq8lo")
+progression_point = 7.0
+biome = 16
+recipes = Array[null]([])
+icon = ExtResource("2_fxl8i")
 ui_name = "Gold"
 ui_description = "Thisis gold baby"

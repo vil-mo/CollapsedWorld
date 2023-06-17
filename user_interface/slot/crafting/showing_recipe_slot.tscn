@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5c8jic8goo4w"]
+
+[ext_resource type="Script" path="res://user_interface/slot/crafting/showing_recipe_slot.gd" id="1_ewft2"]
+[ext_resource type="PackedScene" uid="uid://cdhdlegasj7uy" path="res://user_interface/slot/slot_ui.tscn" id="1_opu3s"]
+
+[node name="ShowingRecipeSlot" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 49.0
+theme_override_constants/separation = -3
+script = ExtResource("1_ewft2")
+
+[node name="SlotUI" parent="." instance=ExtResource("1_opu3s")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1
+vertical_alignment = 1

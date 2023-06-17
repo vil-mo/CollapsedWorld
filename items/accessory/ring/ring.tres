@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://d1mb3xige11jh"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://bcgigkg0xjapr"]
 
 [ext_resource type="Texture2D" uid="uid://cqeb6ojelcbyp" path="res://items/accessory/ring/ring_icon.png" id="1_hsyxu"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_q70t0"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_q70t0"]
 
 [resource]
 script = ExtResource("2_q70t0")
 key = "ring"
 item_type = 2
-icon = ExtResource("1_hsyxu")
 grounded_sprite = ExtResource("1_hsyxu")
+progression_point = 2.0
+biome = 6
+recipes = Array[null]([])
+icon = ExtResource("1_hsyxu")
 ui_name = "Ring"
 ui_description = "idk
 "

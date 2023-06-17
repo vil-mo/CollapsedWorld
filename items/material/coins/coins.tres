@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://c4xjqvboiupkg"]
+
+[ext_resource type="Texture2D" uid="uid://d105midn1vokt" path="res://items/material/coins/coins_icon.png" id="1_ur2yp"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_jwn8t"]
+
+[resource]
+script = ExtResource("2_jwn8t")
+key = "coins"
+item_type = 4
+grounded_sprite = ExtResource("1_ur2yp")
+progression_point = 0.0
+biome = 63
+recipes = Array[null]([])
+icon = ExtResource("1_ur2yp")
+ui_name = "Coins"
+ui_description = "Can be wasted on useless stuff"

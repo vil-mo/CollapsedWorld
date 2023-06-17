@@ -14,9 +14,7 @@ enum APPLYING_KNOCKBACK_TYPE {
 @export var knockback_force : float
 @export var applying_knockback_type : APPLYING_KNOCKBACK_TYPE = APPLYING_KNOCKBACK_TYPE.AWAY_FROM_PROJECTILE
 @export var knockback_offset_angle : float = 0
-@export var hit_invulnurability_duration : float = 0.2
-
-@export var should_flash : bool = true
+@export var iframes_duration : float = 0.2
 
 var projectile : Projectile
 var emitter : Entity

@@ -1,15 +1,27 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://i36h1myr5kjo"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=7 format=3 uid="uid://cwa1w8nvvk2pi"]
 
 [ext_resource type="Texture2D" uid="uid://cjng88w824a0h" path="res://items/material/wood/wood_grounded.png" id="1_jrnld"]
 [ext_resource type="Texture2D" uid="uid://cm2vt23ssqnq4" path="res://items/material/wood/wood_icon.png" id="2_djhhx"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="3_h3xmf"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="3_h3xmf"]
+[ext_resource type="Resource" uid="uid://c4xjqvboiupkg" path="res://items/material/coins/coins.tres" id="3_o10je"]
+[ext_resource type="Script" path="res://other/recipe.gd" id="4_tu6u8"]
+
+[sub_resource type="Resource" id="Resource_qicd5"]
+script = ExtResource("4_tu6u8")
+amount_crafted = 20
+ingridients = {
+ExtResource("3_o10je"): 20
+}
 
 [resource]
 script = ExtResource("3_h3xmf")
 key = "wood"
 item_type = 4
-icon = ExtResource("2_djhhx")
 grounded_sprite = ExtResource("1_jrnld")
+progression_point = 30.0
+biome = 1
+recipes = Array[ExtResource("4_tu6u8")]([SubResource("Resource_qicd5")])
+icon = ExtResource("2_djhhx")
 ui_name = "Wood"
 ui_description = "Thisiswood
 "

@@ -7,7 +7,16 @@ class_name Hurtbox
 var already_hitted_entities : Array[Entity] = []
 
 func _ready() -> void:
-	set_attack_values(attack)
+	attack.projectile = owner
+	attack.emitter = owner.emitter
+
+func _physics_process(delta: float) -> void:
+	for entity_hitbox in get_overlapping_areas():
+		var entity : Entity = entity_hitbox.owner
+		if can_hit_entity(entity) && (owner.targeting & entity.alignments):
+			owner.hitted_entity(entity)
+			entity.handle_attack(get_attack_for_entity(entity))
+			append_to_already_hitted(entity)
 
 func can_hit_entity(entity : Entity) -> bool:
 	return !already_hitted_entities.has(entity)
@@ -20,6 +29,6 @@ func append_to_already_hitted(entity : Entity) -> void:
 	await get_tree().create_timer(time_before_can_hit_entity_again).timeout
 	already_hitted_entities.erase(entity)
 
-func set_attack_values(to_attack : Attack):
-	to_attack.projectile = owner
-	to_attack.emitter = owner.emitter
+
+
+

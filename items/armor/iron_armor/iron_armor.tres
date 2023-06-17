@@ -1,14 +1,19 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://bombvgpj2e1r6"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=5 format=3 uid="uid://ccync0tssa3jb"]
 
 [ext_resource type="Texture2D" uid="uid://pwonw1dhfnsf" path="res://items/armor/iron_armor/prayer_iron_armor.png" id="1_eqgfg"]
+[ext_resource type="PackedScene" uid="uid://dub2o5mq1uait" path="res://items/armor/iron_armor/iron_armor.tscn" id="1_ha6ks"]
 [ext_resource type="Texture2D" uid="uid://lngxh3uict58" path="res://items/armor/iron_armor/iron_armor_icon.png" id="2_1irva"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_5dcub"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_5dcub"]
 
 [resource]
 script = ExtResource("2_5dcub")
 key = "iron_armor"
 item_type = 0
-icon = ExtResource("2_1irva")
 grounded_sprite = ExtResource("1_eqgfg")
+equipment = ExtResource("1_ha6ks")
+progression_point = 3.0
+biome = 56
+recipes = Array[Resource("res://other/recipe.gd")]([])
+icon = ExtResource("2_1irva")
 ui_name = "Iron Armor"
 ui_description = "Armor made with Iron"

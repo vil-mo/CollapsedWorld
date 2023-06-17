@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://lx1unjpsnvdd"]
+
+[ext_resource type="Script" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_offerings.gd" id="1_7t6e2"]
+[ext_resource type="Theme" uid="uid://dww0wjpetlryc" path="res://user_interface/deafult_theme/deafult_theme.tres" id="3_iw12y"]
+
+[node name="MerchantOfferings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_7t6e2")
+can_be_opened = false
+open_position = Vector2(56, 38)
+close_position = Vector2(328, 38)
+
+[node name="Panel" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 40.0
+offset_right = 584.0
+offset_bottom = 288.0
+theme = ExtResource("3_iw12y")
+clip_tabs = false

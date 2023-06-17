@@ -9,13 +9,15 @@ var items : Dictionary = {
 	ItemKey.ITEM_TYPE.ACCESSORY : [],
 	ItemKey.ITEM_TYPE.RELIC : [],
 	ItemKey.ITEM_TYPE.MATERIAL : [],
-	ItemKey.ITEM_TYPE.CURRENCY : [],
 } 
 var equiped : Dictionary = {
 	ItemKey.ITEM_TYPE.ARMOR : [],
 	ItemKey.ITEM_TYPE.WEAPON : [],
 	ItemKey.ITEM_TYPE.ACCESSORY : [],
 }
+
+signal item_equiped(equipment : Equipment)
+signal item_unequiped(equipment : Equipment)
 
 func _init() -> void:
 	equiped[ItemKey.ITEM_TYPE.ARMOR].resize(1)
@@ -27,6 +29,9 @@ func _init() -> void:
 	EventBus.inventory_equip_in_slot.connect(equip_item)
 	EventBus.inventory_try_to_equip_in_any_slot.connect(equip_item_in_first_empty_slot)
 	EventBus.inventory_unequip_slot.connect(unequip_item)
+	EventBus.inventory_add_item.connect(add_item)
+	EventBus.inventory_remove_item.connect(remove_item)
+	EventBus.crafting_craft_item.connect(craft_item)
 
 func add_item(item_key : ItemKey, amount : int) -> void:
 	var this_item_type_items : Array = items[item_key.item_type]
@@ -39,7 +44,7 @@ func add_item(item_key : ItemKey, amount : int) -> void:
 	item_key.amount += amount
 
 func remove_item(item_key : ItemKey, amount : int) -> void:
-	var this_item_type_items : Array[ItemKey] = items[item_key.item_type]
+	var this_item_type_items : Array = items[item_key.item_type]
 	
 	item_key.amount -= amount
 	
@@ -47,7 +52,8 @@ func remove_item(item_key : ItemKey, amount : int) -> void:
 		this_item_type_items.erase(item_key)
 		item_key.amount = 0
 		
-		unequip_all_item(item_key)
+		if item_key.item_type in equiped:
+			unequip_all_item(item_key)
 		EventBus.ui_update_inventory.emit(items)
 
 func swap_item_places(type : ItemKey.ITEM_TYPE, index_from : int = 0, index_to : int = 0):
@@ -74,6 +80,35 @@ func equip_item(item_key : ItemKey, index : int):
 		unequip_item(slot_type, index)
 	equiped[slot_type][index] = item_key
 	
+	
+	var equipment_instance = item_key.equipment.instantiate()
+	item_key.equipment_instance = equipment_instance
+	if slot_type == ItemKey.ITEM_TYPE.ARMOR:
+		equipment_instance.actions = ["armor"] as Array[String]
+	elif slot_type == ItemKey.ITEM_TYPE.WEAPON:
+		if index == 0:
+			equipment_instance.actions = ["weapon1"]
+		elif index == 1:
+			equipment_instance.actions = ["weapon2"]
+	elif slot_type == ItemKey.ITEM_TYPE.ACCESSORY:
+		if index == 0:
+			equipment_instance.actions = ["accessory1"]
+		elif index == 1:
+			equipment_instance.actions = ["accessory2"]
+		elif index == 2:
+			equipment_instance.actions = ["accessory3"]
+	
+	item_equiped.emit(equipment_instance)
+	
+	EventBus.ui_update_equipped.emit(equiped)
+
+func unequip_item(type : ItemKey.ITEM_TYPE, index : int) -> void:
+	var item_key = equiped[type][index]
+	equiped[type][index] = null
+	
+	item_unequiped.emit(item_key.equipment_instance)
+	item_key.equipment_instance.queue_free()
+	
 	EventBus.ui_update_equipped.emit(equiped)
 
 func equip_item_in_first_empty_slot(item_key : ItemKey):
@@ -89,10 +124,11 @@ func equip_item_in_first_empty_slot(item_key : ItemKey):
 
 func unequip_all_item(item_key : ItemKey):
 	while item_key in equiped[item_key.item_type]:
-		equiped[item_key.item_type].erase(item_key)
+		var index = equiped[item_key.item_type].find(item_key)
+		
+		unequip_item(item_key.item_type, index)
 
-func unequip_item(type : ItemKey.ITEM_TYPE, index : int) -> void:
-	equiped[type][index] = null
-	
-	EventBus.ui_update_equipped.emit(equiped)
-
+func craft_item(recipe : Recipe):
+	for item in recipe.ingridients:
+		remove_item(item, recipe.ingridients[item])
+	add_item(recipe.result, recipe.amount_crafted)

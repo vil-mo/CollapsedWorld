@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt0wynn1yg8j6"]
+
+[ext_resource type="PackedScene" uid="uid://cdhdlegasj7uy" path="res://user_interface/slot/slot_ui.tscn" id="1_f1ysi"]
+[ext_resource type="Script" path="res://user_interface/slot/dragable_slot/inventory_slot/inventory_slot_ui.gd" id="2_54sei"]
+
+[node name="InventorySlotUI" instance=ExtResource("1_f1ysi")]
+script = ExtResource("2_54sei")
+show_item_amount = true
+can_be_dragged = true
+type = 0
+
+[node name="Amount" type="Label" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -18.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "12"
+horizontal_alignment = 2
+vertical_alignment = 2

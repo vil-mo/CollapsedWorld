@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://qia1qjlk8oej"]
+[gd_scene load_steps=5 format=3 uid="uid://qia1qjlk8oej"]
 
 [ext_resource type="Script" path="res://enviroment/merchant/merchant.gd" id="1_ml335"]
 [ext_resource type="Texture2D" uid="uid://dbrj1w7fq75oj" path="res://enviroment/merchant/trivia/trivia_merchant.png" id="2_63wnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpe1e"]
+size = Vector2(30, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evep5"]
+size = Vector2(40, 22)
 
 [node name="Merchant" type="Node2D"]
 script = ExtResource("1_ml335")
@@ -9,3 +15,19 @@ script = ExtResource("1_ml335")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_63wnr")
 vframes = 2
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_bpe1e")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_evep5")

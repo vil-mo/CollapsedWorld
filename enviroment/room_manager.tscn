@@ -1,31 +1,31 @@
-[gd_scene load_steps=38 format=3 uid="uid://cjqmtik2btkch"]
+[gd_scene load_steps=38 format=3 uid="uid://dwuv1rn5va4cu"]
 
 [ext_resource type="Texture2D" uid="uid://djytry0x3uqih" path="res://enviroment/background/background.png" id="1"]
 [ext_resource type="Script" path="res://enviroment/room_manager.gd" id="2"]
 [ext_resource type="Script" path="res://enviroment/camera.gd" id="3"]
-[ext_resource type="PackedScene" path="res://user_interface/interface.tscn" id="4_2ck2r"]
+[ext_resource type="PackedScene" uid="uid://c4xboo3f5trru" path="res://user_interface/interface.tscn" id="4_2ck2r"]
 [ext_resource type="PackedScene" uid="uid://yvoy1p4xc3ok" path="res://enviroment/generation/room_generation.tscn" id="4_e065x"]
 [ext_resource type="PackedScene" uid="uid://lamuc7f5ghun" path="res://other/collectable/collectable.tscn" id="5_jhc2w"]
-[ext_resource type="Resource" uid="uid://dc5d52hmkafs2" path="res://items/currency/coins/coins.tres" id="6_djluh"]
+[ext_resource type="Resource" uid="uid://c4xjqvboiupkg" path="res://items/material/coins/coins.tres" id="6_qw13m"]
 [ext_resource type="Script" path="res://other/collectable/collectable_data/item_collectable_data.gd" id="7_71qnx"]
-[ext_resource type="Resource" uid="uid://c7ltvk2mdy7re" path="res://items/accessory/healing_potion/healing_potion.tres" id="9_xvhy8"]
-[ext_resource type="Resource" uid="uid://dn8pnwiys1ctp" path="res://items/accessory/hermes_boots/hermes_boots.tres" id="10_btgt6"]
-[ext_resource type="Resource" uid="uid://d1mb3xige11jh" path="res://items/accessory/ring/ring.tres" id="11_8qlmc"]
-[ext_resource type="Resource" uid="uid://dasrcq64kx0nq" path="res://items/armor/ice_armor/key_ice_armor.tres" id="12_2hlvt"]
-[ext_resource type="Resource" uid="uid://bombvgpj2e1r6" path="res://items/armor/iron_armor/iron_armor.tres" id="13_eop1m"]
-[ext_resource type="Resource" uid="uid://d0sgtlywr2pvi" path="res://items/material/cog/key_cog.tres" id="14_yryni"]
-[ext_resource type="Resource" uid="uid://5see42nfbqql" path="res://items/material/gold/key_gold.tres" id="15_iuwmd"]
-[ext_resource type="Resource" uid="uid://xg4sd5smg1ve" path="res://items/material/leaf/key_leaf.tres" id="16_e3fpv"]
-[ext_resource type="Resource" uid="uid://i36h1myr5kjo" path="res://items/material/wood/key_wood.tres" id="17_du4et"]
-[ext_resource type="Resource" uid="uid://cfduljtn3qiht" path="res://items/relic/coin/coin.tres" id="18_aadls"]
-[ext_resource type="Resource" uid="uid://ubdhigqiw85l" path="res://items/relic/fire/fire.tres" id="19_xdgg7"]
-[ext_resource type="Resource" uid="uid://e2qu8hfki25o" path="res://items/relic/ice/ice.tres" id="20_1j8lb"]
-[ext_resource type="Resource" uid="uid://o3rrh4fcw0xn" path="res://items/weapon/iron_sword/iron_sword.tres" id="21_7ljlr"]
+[ext_resource type="Resource" uid="uid://dysawxe3mb68q" path="res://items/accessory/healing_potion/healing_potion.tres" id="9_xvhy8"]
+[ext_resource type="Resource" uid="uid://3t83ha87qiib" path="res://items/accessory/hermes_boots/hermes_boots.tres" id="10_btgt6"]
+[ext_resource type="Resource" uid="uid://bcgigkg0xjapr" path="res://items/accessory/ring/ring.tres" id="11_8qlmc"]
+[ext_resource type="Resource" uid="uid://76u1bug5nukg" path="res://items/armor/ice_armor/key_ice_armor.tres" id="12_2hlvt"]
+[ext_resource type="Resource" uid="uid://ccync0tssa3jb" path="res://items/armor/iron_armor/iron_armor.tres" id="13_eop1m"]
+[ext_resource type="Resource" uid="uid://do8xah1mxyx8j" path="res://items/material/cog/key_cog.tres" id="14_yryni"]
+[ext_resource type="Resource" uid="uid://r4yp7iofvsqs" path="res://items/material/gold/key_gold.tres" id="15_iuwmd"]
+[ext_resource type="Resource" uid="uid://bd8s07j5si8jm" path="res://items/material/leaf/key_leaf.tres" id="16_e3fpv"]
+[ext_resource type="Resource" uid="uid://cwa1w8nvvk2pi" path="res://items/material/wood/key_wood.tres" id="17_du4et"]
+[ext_resource type="Resource" path="res://items/relic/coin/coin.tres" id="18_aadls"]
+[ext_resource type="Resource" path="res://items/relic/fire/fire.tres" id="19_xdgg7"]
+[ext_resource type="Resource" path="res://items/relic/ice/ice.tres" id="20_1j8lb"]
+[ext_resource type="Resource" path="res://items/weapon/iron_sword/iron_sword.tres" id="21_7ljlr"]
 [ext_resource type="Resource" path="res://items/weapon/shadow_sword/shadow_sword.tres" id="22_4hnw5"]
 
 [sub_resource type="Resource" id="Resource_q3lai"]
 script = ExtResource("7_71qnx")
-item_key = ExtResource("6_djluh")
+item_key = ExtResource("6_qw13m")
 min_amount = 10
 max_amount = 100
 
@@ -143,61 +143,91 @@ y_sort_enabled = true
 [node name="Collectable" parent="Room" instance=ExtResource("5_jhc2w")]
 position = Vector2(481, 239)
 collectable_data = SubResource("Resource_q3lai")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Interface" parent="." instance=ExtResource("4_2ck2r")]
 
 [node name="Collectable" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(533, 210)
 collectable_data = SubResource("Resource_i5q5l")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable2" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(548, 286)
 collectable_data = SubResource("Resource_op3xa")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable3" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(565, 246)
 collectable_data = SubResource("Resource_m4quv")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable4" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(568, 197)
 collectable_data = SubResource("Resource_gfjvt")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable5" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(569, 153)
 collectable_data = SubResource("Resource_tfb34")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable6" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(576, 119)
 collectable_data = SubResource("Resource_wb460")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable7" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(576, 90)
 collectable_data = SubResource("Resource_5fack")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable8" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(577, 69)
 collectable_data = SubResource("Resource_xhodn")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable9" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(577, 31)
 collectable_data = SubResource("Resource_hhby3")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable10" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(580, 3)
 collectable_data = SubResource("Resource_t8ux8")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable11" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(608, 3)
 collectable_data = SubResource("Resource_d1bgi")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable12" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(611, 41)
 collectable_data = SubResource("Resource_nixsk")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable13" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(610, 68)
 collectable_data = SubResource("Resource_lbtnf")
+attract_to_player = null
+speed_of_attraction = null
 
 [node name="Collectable14" parent="." instance=ExtResource("5_jhc2w")]
 position = Vector2(611, 104)
 collectable_data = SubResource("Resource_lobka")
+attract_to_player = null
+speed_of_attraction = null

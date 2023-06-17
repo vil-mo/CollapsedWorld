@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cieib5lyg2ssn"]
+
+[ext_resource type="PackedScene" uid="uid://cdhdlegasj7uy" path="res://user_interface/slot/slot_ui.tscn" id="1_m4yxo"]
+[ext_resource type="Script" path="res://user_interface/slot/crafting/crafting_slot_ui.gd" id="2_3wa2o"]
+[ext_resource type="Texture2D" uid="uid://c7x83ro4yvuvh" path="res://user_interface/slot/crafting/crafting_slot_selected.png" id="3_revmq"]
+
+[node name="CraftingSlotUI" instance=ExtResource("1_m4yxo")]
+script = ExtResource("2_3wa2o")
+
+[node name="Selected" type="TextureRect" parent="." index="2"]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 37.0
+texture = ExtResource("3_revmq")
+
+[node name="Amount" type="Label" parent="." index="3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -18.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 2
+vertical_alignment = 2

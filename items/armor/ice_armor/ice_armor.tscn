@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxlycg4bo147k"]
+
+[ext_resource type="Script" path="res://items/armor/armor_equipment.gd" id="1_ip6sk"]
+[ext_resource type="Script" path="res://other/stats.gd" id="2_h4ecs"]
+
+[sub_resource type="Resource" id="Resource_i7lpt"]
+script = ExtResource("2_h4ecs")
+walking_speed = 100.0
+walking_acceleration = 0.0
+walking_deceleration = 0.0
+hight_force_deceleration = 0.0
+knockback_resist = 0.0
+fall_damage = 0
+
+[sub_resource type="Resource" id="Resource_sr5x7"]
+script = ExtResource("2_h4ecs")
+walking_speed = 0.0
+walking_acceleration = 0.0
+walking_deceleration = 0.0
+hight_force_deceleration = 0.0
+knockback_resist = 0.0
+fall_damage = 0
+
+[node name="IceArmor" type="Node2D"]
+script = ExtResource("1_ip6sk")
+appearance_directory = "res://items/armor/ice_armor/appearance"
+linear_buff = SubResource("Resource_i7lpt")
+scalar_buff = SubResource("Resource_sr5x7")

@@ -1,13 +1,18 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://dasrcq64kx0nq"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://76u1bug5nukg"]
 
+[ext_resource type="PackedScene" uid="uid://bxlycg4bo147k" path="res://items/armor/ice_armor/ice_armor.tscn" id="1_hqocb"]
 [ext_resource type="Texture2D" uid="uid://b22c0ol4rer8s" path="res://items/armor/ice_armor/ice_armor_icon.png" id="1_wyw8i"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_jakyv"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_jakyv"]
 
 [resource]
 script = ExtResource("2_jakyv")
 key = "ice_armor"
 item_type = 0
-icon = ExtResource("1_wyw8i")
 grounded_sprite = ExtResource("1_wyw8i")
+equipment = ExtResource("1_hqocb")
+progression_point = 10.5
+biome = 2
+recipes = Array[Resource("res://other/recipe.gd")]([])
+icon = ExtResource("1_wyw8i")
 ui_name = "Ice Armor"
 ui_description = "<>aeou"

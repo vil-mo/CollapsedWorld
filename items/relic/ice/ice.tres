@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://e2qu8hfki25o"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3]
 
 [ext_resource type="Texture2D" uid="uid://bfyy3fkurhh5e" path="res://items/relic/ice/ice_icon.png" id="1_ylrw7"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_y4n1o"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_y4n1o"]
 
 [resource]
 script = ExtResource("2_y4n1o")

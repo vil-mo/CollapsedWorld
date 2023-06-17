@@ -1,5 +1,7 @@
 extends Node
 
+# Room state
+
 signal player_entered_room()
 signal player_beat_room()
 signal player_entered_door(biome : GenerationConditions.BIOMS)
@@ -17,8 +19,25 @@ signal ui_update_inventory(items : Dictionary)
 signal ui_update_equipped(equiped : Dictionary)
 signal ui_update_inventory_slots_content(items : Dictionary)
 
+# Inventory
 signal inventory_swap_inventory_slots(type : ItemKey.ITEM_TYPE, slot1_index : int, slot2_index : int)
 signal inventory_swap_equipment_slots(type : ItemKey.ITEM_TYPE, slot1_index : int, slot2_index : int)
 signal inventory_equip_in_slot(item : ItemKey, slot_index : int)
 signal inventory_try_to_equip_in_any_slot(item : ItemKey)
 signal inventory_unequip_slot(type : ItemKey.ITEM_TYPE, slot_index : int)
+signal inventory_add_item(item_key : ItemKey, amount : int)
+signal inventory_remove_item(item_key : ItemKey, amount : int)
+
+signal inventory_item_amount_changed(item_key : ItemKey)
+
+# Crafting
+signal crafting_update_recipe_showing(recipe : Recipe)
+signal crafting_mouse_entered_crafting_slot(slot : CraftingSlotUI)
+signal crafting_mouse_exited_crafting_slot(slot : CraftingSlotUI)
+signal crafting_select_crafting_slot(slot : CraftingSlotUI)
+signal crafting_craft_item(recipe : Recipe)
+
+# Merchant
+signal merchant_initialized(merchant_resource : MerchantResource)
+signal merchant_player_entered_detector()
+signal merchant_player_exited_detector()

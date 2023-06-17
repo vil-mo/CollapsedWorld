@@ -1,0 +1,162 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceth3b8qp0uh1"]
+
+[ext_resource type="Texture2D" uid="uid://divif1x5awaqw" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/crafting/crafting_panel.png" id="1_d1dmk"]
+[ext_resource type="Script" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/crafting/crafing_slots_initializer.gd" id="2_t6kje"]
+[ext_resource type="Texture2D" uid="uid://dn7cyhuexv7r6" path="res://user_interface/slot/slot.png" id="3_cgfjs"]
+[ext_resource type="Script" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/crafting/recipe_showing_manager.gd" id="3_qeheo"]
+[ext_resource type="Script" path="res://user_interface/slot/crafting/crafting_result_slot_ui.gd" id="4_h0yjr"]
+[ext_resource type="Texture2D" uid="uid://c5ggh8gtm1jie" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/crafting/crafting_result_materials.png" id="4_snvnq"]
+[ext_resource type="Script" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/crafting/showing_recipe.gd" id="6_i4d6h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5k2c"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_d1dmk")
+texture_margin_left = 11.0
+texture_margin_top = 16.8168
+texture_margin_right = 12.0
+texture_margin_bottom = 14.0
+
+[node name="CraftingMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -375.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+metadata/tab_title = "Crafitng"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_k5k2c")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = -11.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="CrafingSlots" type="HFlowContainer" parent="VBoxContainer/Panel/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+script = ExtResource("2_t6kje")
+
+[node name="RecipeShowingManager" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_qeheo")
+
+[node name="CraftingResultSlot" type="TextureRect" parent="VBoxContainer/RecipeShowingManager"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_cgfjs")
+script = ExtResource("4_h0yjr")
+
+[node name="Frame" type="TextureRect" parent="VBoxContainer/RecipeShowingManager/CraftingResultSlot"]
+layout_mode = 2
+offset_right = 29.0
+offset_bottom = 36.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_cgfjs")
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/RecipeShowingManager/CraftingResultSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Amount" type="Label" parent="VBoxContainer/RecipeShowingManager/CraftingResultSlot"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -18.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel" type="NinePatchRect" parent="VBoxContainer/RecipeShowingManager"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_snvnq")
+patch_margin_left = 38
+patch_margin_right = 26
+patch_margin_bottom = 57
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/RecipeShowingManager/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/RecipeShowingManager/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="ShowingRecipe" type="HBoxContainer" parent="VBoxContainer/RecipeShowingManager/Panel/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 1
+script = ExtResource("6_i4d6h")

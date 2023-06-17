@@ -1,26 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://br1g73r857b0c"]
+[gd_scene load_steps=16 format=3 uid="uid://d280x8irtocig"]
 
 [ext_resource type="Script" path="res://entity/entity.gd" id="1_djo1o"]
-[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/playable_characters/void/void_fall.png" id="2_i3tnm"]
+[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/player/player_fall.png" id="2_i3tnm"]
 [ext_resource type="Texture2D" uid="uid://dkocmifd7b57w" path="res://entity/shades/medium_shade.png" id="3_2hj4w"]
 [ext_resource type="Script" path="res://other/entity_stats.gd" id="3_52htm"]
-[ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/playable_characters/void/void_default.png" id="4_dpxq3"]
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="5_amxdo"]
+[ext_resource type="Script" path="res://entity/entity_animation_tree.gd" id="6_ccsj2"]
+[ext_resource type="Script" path="res://entity/state_machine/state_machine.gd" id="6_kffa8"]
+[ext_resource type="Script" path="res://entity/equipment_machine/equpment_machine.gd" id="8_runj3"]
 
 [sub_resource type="Resource" id="Resource_3x724"]
 resource_local_to_scene = true
 script = ExtResource("3_52htm")
-walking_speed = null
-walking_acceleration = null
-walking_deceleration = null
-hight_force_deceleration = null
-knockback_resist = null
-fall_damage = null
+walking_speed = 100.0
+walking_acceleration = 0.2
+walking_deceleration = 0.1
+hight_force_deceleration = 800.0
+knockback_resist = 0.0
+fall_damage = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kapcq"]
 shader = ExtResource("5_amxdo")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_amount = 0.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rgciw"]
+graph_offset = Vector2(-15, -10)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_417hi"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(8, 2)
@@ -49,15 +56,18 @@ modulate = Color(1, 1, 1, 0.501961)
 y_sort_enabled = true
 texture = ExtResource("3_2hj4w")
 
-[node name="Sprite" type="Node2D" parent="Visuals"]
+[node name="Sprites" type="Node2D" parent="Visuals"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_kapcq")
 
-[node name="Torso" type="Sprite2D" parent="Visuals/Sprite"]
-y_sort_enabled = true
-use_parent_material = true
-texture = ExtResource("4_dpxq3")
-offset = Vector2(0, -8)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+
+[node name="AnimationTree" type="AnimationTree" parent="Visuals"]
+tree_root = SubResource("AnimationNodeStateMachine_rgciw")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_417hi")
+script = ExtResource("6_ccsj2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -82,3 +92,9 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetector"]
 shape = SubResource("26")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("6_kffa8")
+
+[node name="EqupmentMachine" type="Node2D" parent="."]
+script = ExtResource("8_runj3")

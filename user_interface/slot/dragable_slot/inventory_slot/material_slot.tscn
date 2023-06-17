@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwpl5nxv8pggg"]
+
+[ext_resource type="PackedScene" uid="uid://dt0wynn1yg8j6" path="res://user_interface/slot/dragable_slot/inventory_slot/inventory_slot_ui.tscn" id="1_r17nn"]
+[ext_resource type="Texture2D" uid="uid://ddfcx63y2wdw3" path="res://user_interface/slot/dragable_slot/inventory_slot/material_slot.png" id="2_c8avx"]
+
+[node name="MaterialSlot" instance=ExtResource("1_r17nn")]
+offset_right = 21.0
+offset_bottom = 22.0
+texture = ExtResource("2_c8avx")
+type = 4
+
+[node name="Frame" parent="." index="0"]
+offset_right = 21.0
+offset_bottom = 22.0
+texture = ExtResource("2_c8avx")
+
+[node name="Icon" parent="." index="1"]
+offset_left = -4.5
+offset_top = -5.0
+offset_right = 4.5
+offset_bottom = 5.0

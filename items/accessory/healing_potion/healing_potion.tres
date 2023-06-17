@@ -1,14 +1,28 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=3 format=3 uid="uid://c7ltvk2mdy7re"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=7 format=3 uid="uid://dysawxe3mb68q"]
 
 [ext_resource type="Texture2D" uid="uid://by161qf7gllic" path="res://items/accessory/healing_potion/healing_potion_icon.png" id="1_3spuf"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_vxjnl"]
+[ext_resource type="Resource" uid="uid://do8xah1mxyx8j" path="res://items/material/cog/key_cog.tres" id="2_jnbjh"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_vxjnl"]
+[ext_resource type="Script" path="res://other/recipe.gd" id="3_0dibq"]
+[ext_resource type="Resource" uid="uid://r4yp7iofvsqs" path="res://items/material/gold/key_gold.tres" id="3_xqrfq"]
+
+[sub_resource type="Resource" id="Resource_au46s"]
+script = ExtResource("3_0dibq")
+amount_crafted = 1
+ingridients = {
+ExtResource("2_jnbjh"): 1000,
+ExtResource("3_xqrfq"): 1
+}
 
 [resource]
 script = ExtResource("2_vxjnl")
 key = "healing_potion"
 item_type = 2
-icon = ExtResource("1_3spuf")
 grounded_sprite = ExtResource("1_3spuf")
+progression_point = 10.0
+biome = 8
+recipes = Array[ExtResource("3_0dibq")]([SubResource("Resource_au46s")])
+icon = ExtResource("1_3spuf")
 ui_name = "Healing Potion"
 ui_description = "Heals you
 "

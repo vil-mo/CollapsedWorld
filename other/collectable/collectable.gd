@@ -15,6 +15,6 @@ func _physics_process(delta: float) -> void:
 	if attract_to_player && ! GameManager.player.is_fell:
 		global_position += global_position.direction_to(GameManager.player.global_position) * speed_of_attraction * delta
 
-func collect(player : PlayableCharacter):
+func collect(player : Player):
 	collectable_data.collect(player)
 	animation_player.play("collected")

@@ -12,36 +12,19 @@ extends Node
 # 100 : interface
 # ============================
 
-const PlayerScene = preload("res://entity/playable_characters/playable_character.tscn")
+const PlayerScene = preload("res://entity/player/player.tscn")
 
-@onready var player : PlayableCharacter = PlayerScene.instantiate()
+@onready var player : Player = PlayerScene.instantiate()
 
-var ITEMS_KEY_INFORMATION := {}
 
-func _init():
-	initialize_item_keys("res://items/")
+
+
 
 func drop_player():
 	if !player.is_inside_tree():
 		FallenEntitiesManager.drop_entity(player)
 
-func initialize_item_keys(in_directory : String):
-	var dir = DirAccess.open(in_directory)
-	dir.list_dir_begin()
-	
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif dir.current_is_dir():
-			initialize_item_keys(in_directory + file + "/")
-		elif file.ends_with(".tres"):
-			var loaded_file = load(in_directory + file)
-			if loaded_file is ItemKey:
-				assert(! ITEMS_KEY_INFORMATION.has(loaded_file.key), 'Item with key "' + loaded_file.key + '" already exists, file: ' + file)
-				ITEMS_KEY_INFORMATION[loaded_file.key] = loaded_file
-	
-	dir.list_dir_end()
+
 
 func get_random_point_in_several_polygons(polygons : Array[PackedVector2Array]):
 	var triangulated_points : Array[Vector2] = []

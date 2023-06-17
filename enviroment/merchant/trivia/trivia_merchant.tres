@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="MerchantResource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="MerchantResource" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://enviroment/merchant/merchant_resource.gd" id="1_6xpoa"]
+[ext_resource type="PackedScene" uid="uid://ceth3b8qp0uh1" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/crafting/crafting_menu.tscn" id="1_u01tt"]
+[ext_resource type="PackedScene" uid="uid://dss0ia756dlln" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/deafault_menus/modifiers/modifiers_menu.tscn" id="2_3cmr5"]
 [ext_resource type="Texture2D" uid="uid://dbrj1w7fq75oj" path="res://enviroment/merchant/trivia/trivia_merchant.png" id="2_trltg"]
+[ext_resource type="PackedScene" uid="uid://bk4r7r4kdvh4j" path="res://user_interface/opened_on_tab/merchant_offerings/merchant_menus/trivia_shop_merchant_menu.tscn" id="3_1fnxd"]
 
 [resource]
 script = ExtResource("1_6xpoa")
 sprite = ExtResource("2_trltg")
-merchant_menus = Array[Resource("res://enviroment/progression_objects/merchant/merchant_menu.gd")]([])
+merchant_menus = Array[PackedScene]([ExtResource("1_u01tt"), ExtResource("2_3cmr5"), ExtResource("3_1fnxd")])

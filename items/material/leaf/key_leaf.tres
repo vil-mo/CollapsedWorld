@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://xg4sd5smg1ve"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=4 format=3 uid="uid://bd8s07j5si8jm"]
 
 [ext_resource type="Texture2D" uid="uid://c17mjr011yu32" path="res://items/material/leaf/leaf_grounded.png" id="1_fvem0"]
-[ext_resource type="Script" path="res://items/item_key.gd" id="2_fjvvu"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_fjvvu"]
 [ext_resource type="Texture2D" uid="uid://cpd28b1pfybr" path="res://items/material/leaf/leaf_icon.png" id="2_q1806"]
 
 [resource]
 script = ExtResource("2_fjvvu")
 key = "leaf"
 item_type = 4
-icon = ExtResource("2_q1806")
 grounded_sprite = ExtResource("1_fvem0")
+progression_point = 5.5
+biome = 4
+recipes = Array[Resource("res://other/recipe.gd")]([])
+icon = ExtResource("2_q1806")
 ui_name = "Leaf"
 ui_description = "Just leaf"
