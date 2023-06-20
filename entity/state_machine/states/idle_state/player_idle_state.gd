@@ -14,13 +14,12 @@ var look_directions : Dictionary = {
 	Vector2(1, -1)  : "RightUp",
 }
 
-func ready_state(entity : Entity):
+func ready_state():
 	assert(entity is Player, "Why is it not on player?")
 	animation_tree_idle_playback = entity.get_node("Visuals/AnimationTree").get("parameters/Idle/playback")
 
-func physics_process_state(entity : Entity, delta : float):
-	entity = entity as Player
-	super(entity, delta)
+func physics_process_state(delta : float):
+	super(delta)
 	
 	
 	if Input.is_action_just_pressed("armor"):

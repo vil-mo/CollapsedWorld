@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=12 format=3 uid="uid://3t83ha87qiib"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=13 format=3 uid="uid://3t83ha87qiib"]
 
+[ext_resource type="PackedScene" uid="uid://ci2yms5u3mytb" path="res://items/accessory/hermes_boots/hermes_boots.tscn" id="1_h8cla"]
 [ext_resource type="Texture2D" uid="uid://conip40ydu8k3" path="res://items/accessory/hermes_boots/hermes_boots_icon.png" id="1_uiqgf"]
 [ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_1e8jg"]
 [ext_resource type="Resource" uid="uid://dysawxe3mb68q" path="res://items/accessory/healing_potion/healing_potion.tres" id="2_wk0ut"]
@@ -33,6 +34,7 @@ script = ExtResource("2_1e8jg")
 key = "hermes_boots"
 item_type = 2
 grounded_sprite = ExtResource("1_uiqgf")
+equipment = ExtResource("1_h8cla")
 progression_point = 50.0
 biome = 1
 recipes = Array[ExtResource("3_uq2gb")]([SubResource("Resource_q5ivc"), SubResource("Resource_6d7w2")])

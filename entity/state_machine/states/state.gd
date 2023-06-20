@@ -3,6 +3,8 @@ class_name State
 
 var transitions : Array[StateTransition]
 
+var entity : Entity
+
 func _ready() -> void:
 	for transition in get_children():
 		if transition is StateTransition:
@@ -14,17 +16,17 @@ func check_if_should_transition() -> StateTransition:
 			return transition
 	return null
 
-func ready_state(entity : Entity):
+func ready_state():
 	pass
 
-func physics_process_state(entity : Entity, delta : float):
+func physics_process_state(delta : float):
 	pass
 
-func process_state(entity : Entity, delta : float):
+func process_state(delta : float):
 	pass
 
-func enter(entity : Entity, transition_details : Dictionary):
+func enter(transition_details : Dictionary):
 	pass
 
-func exit(entity : Entity, transition_details : Dictionary):
+func exit(transition_details : Dictionary):
 	pass

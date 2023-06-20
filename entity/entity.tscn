@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d280x8irtocig"]
+[gd_scene load_steps=16 format=3 uid="uid://dcubp8ihsbb73"]
 
 [ext_resource type="Script" path="res://entity/entity.gd" id="1_djo1o"]
 [ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/player/player_fall.png" id="2_i3tnm"]
@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://entity/entity.gdshader" id="5_amxdo"]
 [ext_resource type="Script" path="res://entity/entity_animation_tree.gd" id="6_ccsj2"]
 [ext_resource type="Script" path="res://entity/state_machine/state_machine.gd" id="6_kffa8"]
-[ext_resource type="Script" path="res://entity/equipment_machine/equpment_machine.gd" id="8_runj3"]
+[ext_resource type="Script" path="res://entity/status_machine/status_machine.gd" id="8_noug6"]
 
 [sub_resource type="Resource" id="Resource_3x724"]
 resource_local_to_scene = true
@@ -97,4 +97,4 @@ shape = SubResource("26")
 script = ExtResource("6_kffa8")
 
 [node name="EqupmentMachine" type="Node2D" parent="."]
-script = ExtResource("8_runj3")
+script = ExtResource("8_noug6")

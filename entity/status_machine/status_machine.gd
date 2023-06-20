@@ -1,15 +1,15 @@
 extends Node2D
-class_name EquipmentMachine
+class_name StatusMachine
 
 @onready var equipment : Array = get_children()
 
-func equip(to_equip : Equipment):
+func equip(to_equip : Status):
 	to_equip.entity = owner
 	add_child(to_equip)
 	to_equip.equiped()
 	equipment.append(to_equip)
 
-func unequip(to_equip : Equipment):
+func unequip(to_equip : Status):
 	to_equip.unequiped()
 	remove_child(to_equip)
 	equipment.erase(to_equip)

@@ -10,7 +10,7 @@ class_name Entity
 @onready var sprites : Node2D = $Visuals/Sprites
 @onready var hitbox : Area2D = $Hitbox
 @onready var ground_detector : Area2D = $GroundDetector
-@onready var equipment_mahcine : EquipmentMachine = $EqupmentMachine
+@onready var equipment_mahcine : StatusMachine = $EqupmentMachine
 
 
 var is_on_ground := true
@@ -45,10 +45,10 @@ func _check_ground():
 		is_on_ground = true
 
 
-func equip(equipment : Equipment):
+func equip(equipment : Status):
 	equipment_mahcine.equip(equipment)
 
-func unequip(equipmunt : Equipment):
+func unequip(equipmunt : Status):
 	equipment_mahcine.unequip(equipmunt)
 
 func handle_attack(attack : Attack):

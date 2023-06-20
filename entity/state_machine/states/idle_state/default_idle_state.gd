@@ -4,10 +4,10 @@ class_name DefaultIdleState
 @export var reset_velocity_when_moving_in_opposite_direction := true
 var movement_direction := Vector2.ZERO
 
-func physics_process_state(entity : Entity, delta : float):
-	walk(movement_direction, entity, delta)
+func physics_process_state(delta : float):
+	walk(movement_direction, delta)
 
-func walk(direction : Vector2, entity : Entity, delta : float):
+func walk(direction : Vector2, delta : float):
 	direction = direction.normalized()
 	
 	var current_stats := entity.stats.current_stats

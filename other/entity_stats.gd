@@ -9,7 +9,7 @@ var linear_buffs : Array[Stats] = []
 func _init() -> void:
 	current_stats = Stats.new()
 
-func add_buff(linear : Stats, scalar : Stats):
+func add_buff(scalar : Stats, linear : Stats = null):
 	if linear:
 		linear_buffs.append(linear)
 	if scalar:

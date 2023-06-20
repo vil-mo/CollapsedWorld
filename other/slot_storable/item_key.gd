@@ -16,5 +16,5 @@ var amount : int = 0:
 		amount = val
 		EventBus.inventory_item_amount_changed.emit(self)
 
-var equipment_instance : Equipment
+var equipment_instance : Status
 

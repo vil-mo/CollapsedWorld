@@ -1,5 +1,5 @@
-extends Equipment
-class_name ArmorEquipment
+extends Status
+class_name ArmorStatus
 
 @export_dir var appearance_directory : String
 

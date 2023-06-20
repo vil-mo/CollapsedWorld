@@ -1,19 +1,19 @@
 [gd_scene load_steps=60 format=3 uid="uid://df7qdgxtbkaxq"]
 
-[ext_resource type="PackedScene" uid="uid://d280x8irtocig" path="res://entity/entity.tscn" id="1_b6taw"]
+[ext_resource type="PackedScene" uid="uid://dcubp8ihsbb73" path="res://entity/entity.tscn" id="1_b6taw"]
 [ext_resource type="Script" path="res://entity/player/player.gd" id="2_elgsj"]
-[ext_resource type="PackedScene" path="res://entity/player/void_drop_effect.tscn" id="3_apilw"]
+[ext_resource type="PackedScene" path="res://entity/player/void_drop_effect.tscn" id="3_q1yfd"]
 [ext_resource type="Texture2D" uid="uid://cppojr04wdk" path="res://items/armor/iron_armor/appearance/head/head1.png" id="3_q218u"]
 [ext_resource type="Texture2D" uid="uid://b724ysbutktnx" path="res://items/armor/iron_armor/appearance/torso/torso1.png" id="4_gp4kc"]
-[ext_resource type="Script" path="res://other/entity_stats.gd" id="4_mqvhk"]
+[ext_resource type="Script" path="res://other/entity_stats.gd" id="4_mb05t"]
 [ext_resource type="Texture2D" uid="uid://btmdxpfvbuoq4" path="res://items/armor/iron_armor/appearance/leg_left/leg_left1.png" id="5_u6yme"]
 [ext_resource type="Texture2D" uid="uid://jvpqya27maqu" path="res://items/armor/iron_armor/appearance/leg_right/leg_right1.png" id="6_ct4ma"]
 [ext_resource type="PackedScene" uid="uid://rvs7ucyvm5l5" path="res://entity/state_machine/states/idle_state/player_idle_state.tscn" id="6_v5ldd"]
 [ext_resource type="Script" path="res://entity/visuals/sprites_appearance_changer.gd" id="37_x30ya"]
 
-[sub_resource type="Resource" id="Resource_rke2j"]
+[sub_resource type="Resource" id="Resource_rx6hc"]
 resource_local_to_scene = true
-script = ExtResource("4_mqvhk")
+script = ExtResource("4_mb05t")
 walking_speed = 100.0
 walking_acceleration = 0.2
 walking_deceleration = 0.1
@@ -735,9 +735,8 @@ radius = 5.0
 [node name="Player" instance=ExtResource("1_b6taw")]
 collision_layer = 192
 script = ExtResource("2_elgsj")
-drop_effect = ExtResource("3_apilw")
-stats = SubResource("Resource_rke2j")
-alignments = 1
+drop_effect = ExtResource("3_q1yfd")
+stats = SubResource("Resource_rx6hc")
 
 [node name="Shadow" parent="Visuals" index="0"]
 z_index = -1
@@ -803,3 +802,4 @@ shape = SubResource("CircleShape2D_xx4ih")
 first_state = NodePath("PlayerIdleState")
 
 [node name="PlayerIdleState" parent="StateMachine" index="0" instance=ExtResource("6_v5ldd")]
+reset_velocity_when_moving_in_opposite_direction = null

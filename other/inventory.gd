@@ -16,8 +16,8 @@ var equiped : Dictionary = {
 	ItemKey.ITEM_TYPE.ACCESSORY : [],
 }
 
-signal item_equiped(equipment : Equipment)
-signal item_unequiped(equipment : Equipment)
+signal item_equiped(equipment)
+signal item_unequiped(equipment)
 
 func _init() -> void:
 	equiped[ItemKey.ITEM_TYPE.ARMOR].resize(1)
@@ -87,16 +87,16 @@ func equip_item(item_key : ItemKey, index : int):
 		equipment_instance.actions = ["armor"] as Array[String]
 	elif slot_type == ItemKey.ITEM_TYPE.WEAPON:
 		if index == 0:
-			equipment_instance.actions = ["weapon1"]
+			equipment_instance.actions = ["weapon1"] as Array[String]
 		elif index == 1:
-			equipment_instance.actions = ["weapon2"]
+			equipment_instance.actions = ["weapon2"] as Array[String]
 	elif slot_type == ItemKey.ITEM_TYPE.ACCESSORY:
 		if index == 0:
-			equipment_instance.actions = ["accessory1"]
+			equipment_instance.actions = ["accessory1"] as Array[String]
 		elif index == 1:
-			equipment_instance.actions = ["accessory2"]
+			equipment_instance.actions = ["accessory2"] as Array[String]
 		elif index == 2:
-			equipment_instance.actions = ["accessory3"]
+			equipment_instance.actions = ["accessory3"] as Array[String]
 	
 	item_equiped.emit(equipment_instance)
 	

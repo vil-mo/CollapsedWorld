@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci2yms5u3mytb"]
+
+[ext_resource type="Script" path="res://items/accessory/hermes_boots/hermes_boots.gd" id="1_p4ogp"]
+
+[node name="HermesBoots" type="Node2D"]
+script = ExtResource("1_p4ogp")
+actions = null
+usable = null
