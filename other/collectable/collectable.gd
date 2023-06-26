@@ -10,11 +10,13 @@ extends Area2D
 func _ready() -> void:
 	if collectable_data is ItemCollectableData:
 		sprite.texture = collectable_data.item_key.grounded_sprite
+	area_entered.connect(collect)
 
 func _physics_process(delta: float) -> void:
 	if attract_to_player && ! GameManager.player.is_fell:
 		global_position += global_position.direction_to(GameManager.player.global_position) * speed_of_attraction * delta
 
-func collect(player : Player):
-	collectable_data.collect(player)
+func collect(collector):
+	collectable_data.collect(collector.owner)
 	animation_player.play("collected")
+	area_entered.disconnect(collect)

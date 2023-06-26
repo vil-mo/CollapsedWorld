@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://d10yywif8w1dq"]
+
+[ext_resource type="PackedScene" uid="uid://b2dsm2tvddnk" path="res://entity/content/entity.tscn" id="1_sj1yh"]
+[ext_resource type="Script" path="res://entity/content/fighter/fighter.gd" id="2_t5ro2"]
+[ext_resource type="Shader" path="res://entity/shaders/flashing.gdshader" id="3_adrco"]
+[ext_resource type="Script" path="res://entity/content/fighter/fighter_stats.gd" id="3_ys6fj"]
+
+[sub_resource type="Resource" id="Resource_7iisv"]
+script = ExtResource("3_ys6fj")
+speed = 100.0
+walking_acceleration = 0.3
+walking_deceleration = 0.5
+hight_force_deceleration = 1000.0
+knockback_resist = 0.0
+fall_damage = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo0ry"]
+shader = ExtResource("3_adrco")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ebms"]
+size = Vector2(1.5, 1.5625)
+
+[node name="Fighter" instance=ExtResource("1_sj1yh")]
+script = ExtResource("2_t5ro2")
+stat_list = SubResource("Resource_7iisv")
+drop_effect = null
+fall_texture = null
+able_to_fall = true
+
+[node name="FlashingOnDamageSprites" type="Node2D" parent="Visuals" index="0"]
+material = SubResource("ShaderMaterial_bo0ry")
+
+[node name="GroundDetector" type="Area2D" parent="." index="5"]
+z_index = 100
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetector" index="0"]
+shape = SubResource("RectangleShape2D_4ebms")

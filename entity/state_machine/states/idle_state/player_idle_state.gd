@@ -1,7 +1,6 @@
 extends DefaultIdleState
 class_name PlayerIdleState
 
-var animation_tree_idle_playback : AnimationNodeStateMachinePlayback
 
 var look_directions : Dictionary = {
 	Vector2.RIGHT   : "Right",
@@ -16,38 +15,23 @@ var look_directions : Dictionary = {
 
 func ready_state():
 	assert(entity is Player, "Why is it not on player?")
-	animation_tree_idle_playback = entity.get_node("Visuals/AnimationTree").get("parameters/Idle/playback")
 
 func physics_process_state(delta : float):
 	super(delta)
 	
-	
-	if Input.is_action_just_pressed("armor"):
-		entity.equipment_mahcine.use_action("armor")
-	if Input.is_action_just_pressed("weapon1"):
-		entity.equipment_mahcine.use_action("weapon1")
-	if Input.is_action_just_pressed("weapon2"):
-		entity.equipment_mahcine.use_action("weapon2")
-	if Input.is_action_just_pressed("accessory1"):
-		entity.equipment_mahcine.use_action("accessory1")
-	if Input.is_action_just_pressed("accessory2"):
-		entity.equipment_mahcine.use_action("accessory2")
-	if Input.is_action_just_pressed("accessory3"):
-		entity.equipment_mahcine.use_action("accessory3")
-	
-	
-	
-	
 	movement_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	
-	var closest_direction := Vector2.ZERO
-	var closest_distance : float = INF
-	var direction_to_mouse = entity.global_position.direction_to(get_global_mouse_position())
-	for possible_dir in look_directions:
-		var dist = direction_to_mouse.distance_squared_to(possible_dir)
-		if dist < closest_distance:
-			closest_direction = possible_dir
-			closest_distance = dist
+	var direction_to_mouse := get_global_mouse_position() - entity.global_position
+	entity.directional_animation_player.play_direction("Idle", direction_to_mouse)
 	
-	animation_tree_idle_playback.travel("Idle" + look_directions[closest_direction])
+	_check_for_used("armor")
+	_check_for_used("weapon1")
+	_check_for_used("weapon2")
+	_check_for_used("accessory1")
+	_check_for_used("accessory2")
+	_check_for_used("accessory3")
+	
 
+func _check_for_used(action : String):
+	if Input.is_action_pressed(action):
+		entity.status_mahcine.use(action)

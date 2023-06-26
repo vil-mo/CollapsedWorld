@@ -1,5 +1,5 @@
-extends Status
-class_name ArmorStatus
+extends Equipment
+class_name ArmorEquipment
 
 @export_dir var appearance_directory : String
 
@@ -40,14 +40,6 @@ func _initialize_appearance():
 					path = path + file
 					break
 			appearance[PLAYER_APPEARANCE_MAP[num]][sprite] = load(path)
-
-func equiped():
-	super()
-	entity.set_appearance(appearance)
-
-func unequiped():
-	super()
-	entity.set_default_appearance()
 
 
 

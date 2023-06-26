@@ -12,12 +12,9 @@ extends Node
 # 100 : interface
 # ============================
 
-const PlayerScene = preload("res://entity/player/player.tscn")
+const PlayerScene = preload("res://entity/content/fighter/player/player.tscn")
 
 @onready var player : Player = PlayerScene.instantiate()
-
-
-
 
 
 func drop_player():

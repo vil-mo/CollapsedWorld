@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/player/player_fall.png" id="1_mgauq"]
+[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/content/fighter/player/sprites/player_fall.png" id="1_mgauq"]
 
 [sub_resource type="GDScript" id="3"]
 script/source = "extends Sprite2D

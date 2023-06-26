@@ -11,8 +11,6 @@ var room_area : Array[PackedVector2Array] = []
 
 var current_room_number := 0
 
-const Bulle = preload("res://projectiles/test_projectile/test_projectile.tscn")
-
 var conditions : GenerationConditions = GenerationConditions.new()
 
 func _ready():

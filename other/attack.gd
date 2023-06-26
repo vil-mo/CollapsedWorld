@@ -16,7 +16,7 @@ enum APPLYING_KNOCKBACK_TYPE {
 @export var knockback_offset_angle : float = 0
 @export var iframes_duration : float = 0.2
 
-var projectile : Projectile
+var projectile : Entity
 var emitter : Entity
 
 func get_knockback_vector(to_entity : Entity) -> Vector2:

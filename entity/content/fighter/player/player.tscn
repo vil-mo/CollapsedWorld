@@ -1,0 +1,215 @@
+[gd_scene load_steps=22 format=3 uid="uid://bdsa6smbcdfyb"]
+
+[ext_resource type="PackedScene" uid="uid://d10yywif8w1dq" path="res://entity/content/fighter/fighter.tscn" id="1_714gi"]
+[ext_resource type="Script" path="res://entity/content/fighter/player/player.gd" id="2_sev2q"]
+[ext_resource type="Script" path="res://entity/content/fighter/fighter_stats.gd" id="3_jihwc"]
+[ext_resource type="PackedScene" uid="uid://rvs7ucyvm5l5" path="res://entity/state_machine/states/idle_state/player_idle_state.tscn" id="4_44fjc"]
+[ext_resource type="PackedScene" uid="uid://bfbfq6371m8lr" path="res://entity/content/fighter/player/void_drop_effect.tscn" id="4_ri6pf"]
+[ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/content/fighter/player/sprites/player_fall.png" id="5_oa0nd"]
+[ext_resource type="Texture2D" uid="uid://dkocmifd7b57w" path="res://entity/shades/medium_shade.png" id="6_didx4"]
+[ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/content/fighter/player/sprites/player_default.png" id="6_iuf5p"]
+[ext_resource type="Script" path="res://entity/visuals/directional_animation_player.gd" id="8_7405v"]
+
+[sub_resource type="Resource" id="Resource_0a8yc"]
+script = ExtResource("3_jihwc")
+speed = 100.0
+walking_acceleration = 0.2
+walking_deceleration = 0.3
+hight_force_deceleration = 1000.0
+knockback_resist = 0.0
+fall_damage = 0
+
+[sub_resource type="Animation" id="Animation_u635o"]
+resource_name = "IdleDown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_7ml12"]
+resource_name = "IdleLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_b87tf"]
+resource_name = "IdleLeftDown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_72lhe"]
+resource_name = "IdleLeftUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_5mciv"]
+resource_name = "IdleRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kruot"]
+resource_name = "IdleRightDown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_nt4nh"]
+resource_name = "IdleRightUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_0mem8"]
+resource_name = "IdleUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_p0ysm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingOnDamageSprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_joyjn"]
+_data = {
+"IdleDown": SubResource("Animation_u635o"),
+"IdleLeft": SubResource("Animation_7ml12"),
+"IdleLeftDown": SubResource("Animation_b87tf"),
+"IdleLeftUp": SubResource("Animation_72lhe"),
+"IdleRight": SubResource("Animation_5mciv"),
+"IdleRightDown": SubResource("Animation_kruot"),
+"IdleRightUp": SubResource("Animation_nt4nh"),
+"IdleUp": SubResource("Animation_0mem8"),
+"RESET": SubResource("Animation_p0ysm")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s36ko"]
+radius = 13.0
+
+[node name="Player" instance=ExtResource("1_714gi")]
+collision_layer = 192
+script = ExtResource("2_sev2q")
+stat_list = SubResource("Resource_0a8yc")
+drop_effect = ExtResource("4_ri6pf")
+fall_texture = ExtResource("5_oa0nd")
+my_alignments = 1
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Visuals" parent="." index="2"]
+y_sort_enabled = false
+
+[node name="Shadow" type="Sprite2D" parent="Visuals" index="0"]
+modulate = Color(1, 1, 1, 0.486275)
+position = Vector2(0, 1)
+texture = ExtResource("6_didx4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals/FlashingOnDamageSprites" index="0"]
+position = Vector2(0, -8)
+texture = ExtResource("6_iuf5p")
+hframes = 8
+
+[node name="DirectionalAnimationPlayer" type="AnimationPlayer" parent="Visuals" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_joyjn")
+}
+script = ExtResource("8_7405v")
+
+[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("first_state")]
+first_state = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" parent="StateMachine" index="0" instance=ExtResource("4_44fjc")]
+
+[node name="GroundDetector" parent="." index="5"]
+visible = false
+
+[node name="CollectableCollector" type="Area2D" parent="." index="6"]
+visible = false
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableCollector" index="0"]
+shape = SubResource("CircleShape2D_s36ko")

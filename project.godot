@@ -111,10 +111,8 @@ armor={
 
 2d_physics/layer_1="Entity"
 2d_navigation/layer_1="Ground"
-2d_physics/layer_2="Projectile"
 2d_physics/layer_3="Ground"
 2d_physics/layer_4="Walls"
-2d_physics/layer_5="Interactable"
 2d_physics/layer_6="Collectable"
 2d_physics/layer_7="EntityBody"
 2d_physics/layer_8="PlayerBody"
