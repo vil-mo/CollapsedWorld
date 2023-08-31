@@ -12,7 +12,6 @@ func _ready() -> void:
 	super()
 	EventBus.ui_update_inventory_slots_content.connect(update_content)
 	EventBus.call_deferred("emit_signal", "ui_initial_set_inventory_slots_parent", type, get_parent())
-	
 
 func _input(event: InputEvent) -> void:
 	if can_be_dragged && event is InputEventMouseButton && _has_point(get_global_mouse_position()):

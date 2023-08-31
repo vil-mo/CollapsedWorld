@@ -49,22 +49,26 @@ func apply_impact(_impact : Impact):
 			status.after_applying_impact[impact_script].call(impact)
 	if after_applying_impact.has(impact_script):
 		after_applying_impact[impact_script].call(impact)
-	
-	
 
 func remove_status(status : Status):
 	status_mahcine.remove(status)
+	status.queue_free()
 
 func change_alignments(to : int):
 	my_alignments = to
 
-func emit_projectile(projectile : PackedScene, replace_emitter : bool) -> Entity:
+func emit_projectile(projectile : PackedScene, replace_emitter : bool, as_child := false) -> Entity:
 	var proj_instance : Entity = projectile.instantiate()
 	if replace_emitter:
 		proj_instance.emitter = self
 	else:
-		proj_instance.emmiter = emitter
+		proj_instance.emitter = emitter
 	
 	proj_instance.global_position = global_position
-	add_sibling(proj_instance)
+	
+	if as_child:
+		proj_instance.emitter.add_child(proj_instance)
+	else:
+		proj_instance.emitter.add_sibling(proj_instance)
+	
 	return proj_instance

@@ -19,7 +19,7 @@ func follow_node(node_to_follow : Node2D = null, allowed_to_move_camera_width_mo
 	is_allowed_to_move_camera_width_mouse = allowed_to_move_camera_width_mouse
 
 func _physics_process(delta):
-	if followed_node && followed_node.is_inside_tree():
+	if followed_node && is_instance_valid(followed_node) && followed_node.is_inside_tree():
 		target_point = followed_node.global_position
 		target_zoom = default_zoom
 	else:

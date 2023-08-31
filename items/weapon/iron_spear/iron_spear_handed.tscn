@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://buanqxumnmqlg"]
+
+[ext_resource type="Texture2D" uid="uid://d3i3dwg8pochc" path="res://items/weapon/iron_spear/iron_spear.png" id="2_nr16w"]
+
+[node name="IronSpearHanded"]
+position_lerping = 0.03
+rotation_lerping = null
+distantce_from_entity = null
+position_in_local_coords = null
+positioning_type = null
+use_durantion = 0.35
+use_type = null
+spear_using_lenght = null
+my_alignments = null
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+
+[node name="Hitbox" parent="." index="1"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" index="0"]
+position = Vector2(10, 0)
+texture = ExtResource("2_nr16w")

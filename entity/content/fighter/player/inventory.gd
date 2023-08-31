@@ -16,8 +16,9 @@ var equiped : Dictionary = {
 	ItemKey.ITEM_TYPE.ACCESSORY : [],
 }
 
-signal item_equiped(item_key : ItemKey, index : int)
-signal item_unequiped(item_key : ItemKey)
+signal item_equiped(item, index)
+signal item_unequiped(item, index)
+signal equiped_items_swaped(item1, item2, index1, index2)
 
 func _init() -> void:
 	equiped[ItemKey.ITEM_TYPE.ARMOR].resize(1)
@@ -63,12 +64,15 @@ func swap_item_places(type : ItemKey.ITEM_TYPE, index_from : int, index_to : int
 	
 	EventBus.ui_update_inventory.emit(items)
 
-func swap_equiped_item_places(type : ItemKey.ITEM_TYPE, index_from : int, index_to : int):
-	var item_from : ItemKey = equiped[type][index_from]
-	equiped[type][index_from] = equiped[type][index_to]
-	equiped[type][index_to] = item_from
+func swap_equiped_item_places(type : ItemKey.ITEM_TYPE, index1 : int, index2 : int):
+	var item1 : ItemKey = equiped[type][index1]
+	var item2 : ItemKey = equiped[type][index2]
+	equiped[type][index1] = item2
+	equiped[type][index2] = item1
 	
-	EventBus.ui_update_equipped.emit(equiped)
+	equiped_items_swaped.emit(item1, item2, index1, index2)
+	
+	EventBus.ui_update_equiped.emit(equiped)
 
 func is_item_equiped(item_key : ItemKey):
 	return item_key in equiped[item_key.item_type]
@@ -82,15 +86,15 @@ func equip_item(item_key : ItemKey, index : int):
 	
 	item_equiped.emit(item_key, index)
 	
-	EventBus.ui_update_equipped.emit(equiped)
+	EventBus.ui_update_equiped.emit(equiped)
 
 func unequip_item(type : ItemKey.ITEM_TYPE, index : int) -> void:
 	var item_key = equiped[type][index]
 	equiped[type][index] = null
 	
-	item_unequiped.emit(item_key)
+	item_unequiped.emit(item_key, index)
 	
-	EventBus.ui_update_equipped.emit(equiped)
+	EventBus.ui_update_equiped.emit(equiped)
 
 func equip_item_in_first_empty_slot(item_key : ItemKey):
 	

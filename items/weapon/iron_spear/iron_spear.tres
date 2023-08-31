@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemKey" load_steps=8 format=3 uid="uid://ci5o60xp0prsp"]
+
+[ext_resource type="PackedScene" uid="uid://b3rum13oos8p3" path="res://items/weapon/iron_spear/iron_spear.tscn" id="1_5lgcf"]
+[ext_resource type="Texture2D" uid="uid://d3i3dwg8pochc" path="res://items/weapon/iron_spear/iron_spear.png" id="1_j27ye"]
+[ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_38he2"]
+[ext_resource type="Texture2D" uid="uid://c5tpa3fusuqsr" path="res://items/weapon/iron_spear/iron_spear_icon.png" id="2_wybd1"]
+[ext_resource type="Resource" uid="uid://cwa1w8nvvk2pi" path="res://items/material/wood/key_wood.tres" id="3_vgkv0"]
+[ext_resource type="Script" path="res://other/recipe.gd" id="4_2x6px"]
+
+[sub_resource type="Resource" id="Resource_6iesj"]
+script = ExtResource("4_2x6px")
+amount_crafted = 1
+ingridients = {
+ExtResource("3_vgkv0"): 10
+}
+
+[resource]
+script = ExtResource("2_38he2")
+key = "iron_spear"
+item_type = 1
+grounded_sprite = ExtResource("1_j27ye")
+equipment = ExtResource("1_5lgcf")
+progression_point = 0.0
+biome = 0
+recipes = Array[ExtResource("4_2x6px")]([SubResource("Resource_6iesj")])
+icon = ExtResource("2_wybd1")
+ui_name = "irspr"
+ui_description = "uwu...."

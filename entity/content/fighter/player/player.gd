@@ -1,7 +1,6 @@
 extends Fighter
 class_name Player
 
-
 @onready var directional_animation_player : DirectionalAnimationPlayer = $Visuals/DirectionalAnimationPlayer
 var inventory = Inventory.new()
 
@@ -10,19 +9,55 @@ func _ready() -> void:
 	
 	inventory.item_equiped.connect(equip)
 	inventory.item_unequiped.connect(unequip)
+	inventory.equiped_items_swaped.connect(eqipment_swaped)
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+
+func eqipment_swaped(item1 : ItemKey, item2 : ItemKey, index1 : int, index2 : int):
+	if item1 == item2:
+		return
+	
+	var item_type
+	if item1:
+		item_type = item1.item_type
+	else:
+		item_type = item2.item_type
+	
+	var action1 := _equipment_slot_to_action(item_type, index1)
+	var action2 := _equipment_slot_to_action(item_type, index2)
+	
+	if item1:
+		var equipment1 = item1.equipment_instance
+		equipment1.this_item_use_acitons.erase(action1)
+		equipment1.this_item_use_acitons.append(action2)
+	if item2:
+		var equipment2 = item2.equipment_instance
+		equipment2.this_item_use_acitons.erase(action2)
+		equipment2.this_item_use_acitons.append(action1)
 
 func equip(item_key : ItemKey, index : int):
 	var item_type = item_key.item_type
-	var equipment_instance : Equipment = apply_status(item_key.equipment)
+	var equipment_instance : Equipment
+	
+	if item_key.equipment_instance:
+		equipment_instance = item_key.equipment_instance
+	else:
+		equipment_instance = apply_status(item_key.equipment)
+		item_key.equipment_instance = equipment_instance
 	
 	var action_of_this_equipment := _equipment_slot_to_action(item_type, index)
-	equipment_instance.this_item_use_acitons = [action_of_this_equipment] as Array[String]
-	
-	item_key.equipment_instance = equipment_instance
+	equipment_instance.this_item_use_acitons.append(action_of_this_equipment)
 
-func unequip(item_key : ItemKey):
-	var equipment = item_key.equipment_instance
-	remove_status(equipment)
+func unequip(item_key : ItemKey, index : int):
+	var equipment_instance = item_key.equipment_instance
+	
+	if inventory.equiped[item_key.item_type].has(item_key):
+		var action_of_this_equipment := _equipment_slot_to_action(item_key.item_type, index)
+		equipment_instance.this_item_use_acitons.erase(action_of_this_equipment)
+	else:
+		remove_status(equipment_instance)
+		item_key.equipment_instance = null
 
 func _action_to_equipment_slot(action : String) -> ItemKey:
 	var equiped_key : ItemKey

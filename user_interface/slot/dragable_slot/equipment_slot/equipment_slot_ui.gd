@@ -5,7 +5,7 @@ class_name EquipmentSlotUI
 
 func _ready() -> void:
 	super()
-	EventBus.ui_update_equipped.connect(update_content)
+	EventBus.ui_update_equiped.connect(update_content)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && _has_point(get_global_mouse_position()):

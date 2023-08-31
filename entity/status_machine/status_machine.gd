@@ -21,7 +21,7 @@ func remove(satus : Status):
 func use(action : String):
 	for status in statuses:
 		if status.usable:
-			status.use(action)
+			status.action_used(action)
 
 func get_status_with_script(script : Script) -> Status:
 	for status in statuses:

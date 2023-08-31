@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdsa6smbcdfyb"]
+[gd_scene load_steps=23 format=3 uid="uid://bdsa6smbcdfyb"]
 
 [ext_resource type="PackedScene" uid="uid://d10yywif8w1dq" path="res://entity/content/fighter/fighter.tscn" id="1_714gi"]
 [ext_resource type="Script" path="res://entity/content/fighter/player/player.gd" id="2_sev2q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dkocmifd7b57w" path="res://entity/shades/medium_shade.png" id="6_didx4"]
 [ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/content/fighter/player/sprites/player_default.png" id="6_iuf5p"]
 [ext_resource type="Script" path="res://entity/visuals/directional_animation_player.gd" id="8_7405v"]
+[ext_resource type="PackedScene" uid="uid://bp63renayb47c" path="res://entity/state_machine/state_machine.tscn" id="9_0ujis"]
 
 [sub_resource type="Resource" id="Resource_0a8yc"]
 script = ExtResource("3_jihwc")
@@ -184,11 +185,11 @@ y_sort_enabled = false
 
 [node name="Shadow" type="Sprite2D" parent="Visuals" index="0"]
 modulate = Color(1, 1, 1, 0.486275)
-position = Vector2(0, 1)
+position = Vector2(0, 5)
 texture = ExtResource("6_didx4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals/FlashingOnDamageSprites" index="0"]
-position = Vector2(0, -8)
+position = Vector2(0, -4)
 texture = ExtResource("6_iuf5p")
 hframes = 8
 
@@ -198,18 +199,16 @@ libraries = {
 }
 script = ExtResource("8_7405v")
 
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("first_state")]
-first_state = NodePath("PlayerIdleState")
-
-[node name="PlayerIdleState" parent="StateMachine" index="0" instance=ExtResource("4_44fjc")]
-
-[node name="GroundDetector" parent="." index="5"]
-visible = false
-
-[node name="CollectableCollector" type="Area2D" parent="." index="6"]
+[node name="CollectableCollector" type="Area2D" parent="." index="5"]
 visible = false
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableCollector" index="0"]
 shape = SubResource("CircleShape2D_s36ko")
+
+[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("first_state") instance=ExtResource("9_0ujis")]
+first_state = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" parent="StateMachine" index="0" instance=ExtResource("4_44fjc")]
+reset_velocity_when_moving_in_opposite_direction = null

@@ -18,8 +18,8 @@ func _ready() -> void:
 		direction_map.erase(dir)
 		direction_map[dir.normalized()] = value
 
-func play_direction(anim_name: StringName, direction : Vector2, custom_blend: float = -1, custom_speed: float = 1.0, from_end: bool = false):
-	direction = direction.normalized()
+func play_direction(anim_name: StringName, direction_angle : float, custom_blend: float = -1, custom_speed: float = 1.0, from_end: bool = false):
+	var direction := Vector2.from_angle(direction_angle)
 	var closest_direction := Vector2.ZERO
 	var closest_distance : float = INF
 	

@@ -21,12 +21,14 @@ func physics_process_state(delta : float):
 	
 	movement_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	
-	var direction_to_mouse := get_global_mouse_position() - entity.global_position
+	var direction_to_mouse := (get_global_mouse_position() - entity.global_position).angle()
 	entity.directional_animation_player.play_direction("Idle", direction_to_mouse)
+	entity.set_meta(HandedItem.LOOKING_DIRECTION_META, direction_to_mouse)
+	
 	
 	_check_for_used("armor")
-	_check_for_used("weapon1")
-	_check_for_used("weapon2")
+	_check_for_used("attack1")
+	_check_for_used("attack2")
 	_check_for_used("accessory1")
 	_check_for_used("accessory2")
 	_check_for_used("accessory3")

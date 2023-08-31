@@ -28,8 +28,9 @@ func _ready() -> void:
 	mouse_exited.connect(on_mouse_exited)
 
 func _physics_process(delta: float) -> void:
-	visible = stored_recipe.has_some_ingridients
-	set_interacted_color(!stored_recipe.can_be_crafted)
+	visible = stored_recipe.has_some_ingridients()
+	if visible:
+		set_interacted_color(!stored_recipe.can_be_crafted())
 
 func on_mouse_entered():
 	EventBus.crafting_mouse_entered_crafting_slot.emit(self)

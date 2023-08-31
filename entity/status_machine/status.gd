@@ -15,8 +15,10 @@ func applyed():
 func removed():
 	pass
 
-func use(action : String):
+func action_used(action : String):
 	pass
 
+
+
 func remove():
-	entity.status_mahcine.remove(self)
+	entity.remove_status(self)

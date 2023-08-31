@@ -16,8 +16,8 @@ signal ui_start_dragging_slot(dragged_slot : SlotUI)
 signal ui_stop_dragging_slot()
 
 signal ui_update_inventory(items : Dictionary)
-signal ui_update_equipped(equiped : Dictionary)
 signal ui_update_inventory_slots_content(items : Dictionary)
+signal ui_update_equiped(equiped : Dictionary)
 
 # Inventory
 signal inventory_swap_inventory_slots(type : ItemKey.ITEM_TYPE, slot1_index : int, slot2_index : int)
@@ -28,7 +28,7 @@ signal inventory_unequip_slot(type : ItemKey.ITEM_TYPE, slot_index : int)
 signal inventory_add_item(item_key : ItemKey, amount : int)
 signal inventory_remove_item(item_key : ItemKey, amount : int)
 
-signal inventory_item_amount_changed(item_key : ItemKey)
+
 
 # Crafting
 signal crafting_update_recipe_showing(recipe : Recipe)
