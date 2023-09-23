@@ -18,10 +18,18 @@ func remove(satus : Status):
 	remove_child(satus)
 	statuses.erase(satus)
 
-func use(action : String):
+func use_action(action : String, continuous_use : bool = false):
 	for status in statuses:
 		if status.usable:
 			status.action_used(action)
+			if continuous_use && !status.continuously_used:
+				status.started_using_action(action)
+
+func stop_using_action(action : String):
+	for status in statuses:
+		if status.usable && status.continuously_used:
+			status.stopped_using_action(action)
+
 
 func get_status_with_script(script : Script) -> Status:
 	for status in statuses:

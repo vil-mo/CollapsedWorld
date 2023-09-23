@@ -1,9 +1,8 @@
-extends Resource
-class_name OrbitItemUsingType
+extends OrbitItemUsingType
+class_name SpearUsingType
 
-@export var use_durantion := 1.0
-
-var target_transform : Transform2D = Transform2D()
+@export var using_curve : Curve
+@export var spear_using_lenght := 10.0
 
 func use_item(time : float, item : OrbitItem) -> Vector3:
 	var position_difference = item.global_position - item.emitter.global_position

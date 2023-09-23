@@ -29,16 +29,10 @@ drop_effect = null
 fall_texture = null
 able_to_fall = true
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 4)
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, 3)
-
 [node name="FlashingOnDamageSprites" type="Node2D" parent="Visuals" index="0"]
 material = SubResource("ShaderMaterial_bo0ry")
 
-[node name="GroundDetector" type="Area2D" parent="." index="4"]
+[node name="GroundDetector" type="Area2D" parent="." index="2"]
 z_index = 100
 collision_layer = 0
 collision_mask = 4

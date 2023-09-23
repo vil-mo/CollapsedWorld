@@ -1,14 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2dsm2tvddnk"]
+[gd_scene load_steps=4 format=3 uid="uid://b2dsm2tvddnk"]
 
 [ext_resource type="Script" path="res://entity/content/entity.gd" id="1_bvtwe"]
 [ext_resource type="Script" path="res://entity/status_machine/status_machine.gd" id="7_v5aly"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(8, 8)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0714k"]
-radius = 3.0
-height = 8.0
 
 [node name="Entity" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -19,15 +15,6 @@ script = ExtResource("1_bvtwe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 100
 shape = SubResource("1")
-
-[node name="Hitbox" type="Area2D" parent="."]
-z_index = 100
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_0714k")
-debug_color = Color(0.87451, 0, 0.0588235, 0.419608)
 
 [node name="Visuals" type="Node2D" parent="."]
 y_sort_enabled = true

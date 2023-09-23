@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3rum13oos8p3"]
 
-[ext_resource type="Script" path="res://items/weapon/weapon_equipment.gd" id="1_js6rh"]
+[ext_resource type="Script" path="res://entity/status_machine/statuses/equipment/swappable_equipment.gd" id="1_js6rh"]
 [ext_resource type="PackedScene" uid="uid://buanqxumnmqlg" path="res://items/weapon/iron_spear/iron_spear_handed.tscn" id="2_cl1no"]
 
 [node name="IronSpear" type="Node2D"]

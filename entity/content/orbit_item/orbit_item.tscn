@@ -1,24 +1,13 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bl8t1mil06sbb"]
 
 [ext_resource type="PackedScene" uid="uid://b2dsm2tvddnk" path="res://entity/content/entity.tscn" id="1_j7juu"]
 [ext_resource type="Script" path="res://entity/content/orbit_item/orbit_item.gd" id="2_86cxh"]
 
-[sub_resource type="Curve" id="Curve_yh48e"]
-_data = [Vector2(0, 0), 0.0, 3.95235, 0, 0, Vector2(0.506211, 1), 0.0276775, 0.0276775, 0, 0, Vector2(1, 0), 2.93381, 0.0, 0, 0]
-point_count = 3
-
-[node name="HandedItem" instance=ExtResource("1_j7juu")]
+[node name="OrbitItem" instance=ExtResource("1_j7juu")]
 collision_mask = 0
 script = ExtResource("2_86cxh")
 position_lerping = 0.6
 rotation_lerping = 0.6
-distantce_from_entity = 6.0
 position_in_local_coords = true
-positioning_type = 0
-use_durantion = 1.0
-using_curve = SubResource("Curve_yh48e")
-use_type = 0
-spear_using_lenght = 10.0
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, 0)
+positioning_type = null
+using_type = null

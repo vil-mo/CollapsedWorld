@@ -8,7 +8,7 @@ class_name OrbitItem
 var position_without_using := Vector2.ZERO
 var direction := 0.0
 var currently_used := false
-var using_timer = Timer.new()
+var use_timer = Timer.new()
 
 @export var positioning_type : OrbitItemPosititoningType
 @export var using_type : OrbitItemUsingType
@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	var target_rotation = positioning_values.z
 	
-	position_without_using = lerp(origin, target_position, position_lerping)
+	position_without_using = lerp(position_without_using, target_position, position_lerping)
 	if rotation - target_rotation > PI:
 		rotation -= TAU
 	elif rotation - target_rotation < -PI:
@@ -64,18 +64,8 @@ func _physics_process(delta: float) -> void:
 		global_position += Vector2(using_values.x, using_values.y)
 		rotation = using_values.z
 
-func use(using_type : OrbitItemUsingType):
+func use(using_type : OrbitItemUsingType = using_type):
 	
-	use_timer.start(use_durantion)
+	use_timer.start(using_type.use_durantion)
 
-
-func spear_positioning() -> Vector3:
-	var to_position = distantce_from_entity * Vector2.from_angle(direction)
-	var to_rotation = direction
-	return Vector3(to_position.x, to_position.y, to_rotation)
-func spear_using(time : float) -> Vector3:
-	var value = using_curve.sample(time)
-	var to_position = Vector2.from_angle(direction) * (spear_using_lenght * value)
-	var to_rotation = rotation
-	return Vector3(to_position.x, to_position.y, to_rotation)
 

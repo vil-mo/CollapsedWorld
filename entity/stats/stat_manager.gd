@@ -34,7 +34,7 @@ func add_buff(scalar : StatList, linear : StatList = null):
 		linear_buffs.append(linear)
 	if scalar:
 		scalar_buffs.append(scalar)
-	
+
 
 func remove_buff(buff : StatList):
 	if buff in scalar_buffs:

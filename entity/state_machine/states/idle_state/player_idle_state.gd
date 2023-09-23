@@ -23,7 +23,7 @@ func physics_process_state(delta : float):
 	
 	var direction_to_mouse := (get_global_mouse_position() - entity.global_position).angle()
 	entity.directional_animation_player.play_direction("Idle", direction_to_mouse)
-	entity.set_meta(HandedItem.LOOKING_DIRECTION_META, direction_to_mouse)
+	entity.set_meta(OrbitItem.LOOKING_DIRECTION_META, direction_to_mouse)
 	
 	
 	_check_for_used("armor")
@@ -36,4 +36,6 @@ func physics_process_state(delta : float):
 
 func _check_for_used(action : String):
 	if Input.is_action_pressed(action):
-		entity.status_mahcine.use(action)
+		entity.status_mahcine.use_action(action, false)
+	if Input.is_action_just_released(action):
+		entity.status_mahcine.stop_using_action(action)
