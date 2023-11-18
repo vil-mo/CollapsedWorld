@@ -10,8 +10,8 @@ func _ready() -> void:
 	skill_rollback_timer.timeout.connect(end_use_effect)
 
 func item_used():
-	var effect_impact := ApplyEffectImpact.new(speed_boost_stats)
-	entity.apply_impact(effect_impact)
+	
+	
 	
 	skill_rollback_timer.start(skill_rollback)
 	usable = false

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlqfcw7i8ohgs"]
-
-[ext_resource type="Script" path="res://entity/status_machine/status_components/range_component/range_component.gd" id="1_75qu0"]
-
-[node name="RangeComponent" type="Node2D"]
-script = ExtResource("1_75qu0")

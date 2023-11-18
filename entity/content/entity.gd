@@ -11,7 +11,7 @@ var emitter : Entity = null
 var before_applying_impact := {} # For detecting initial information, not changing state of impact
 var applying_impact := {}        # For changing state of impact
 var after_applying_impact := {}  # For detecting changes
-
+# T : Impact, {T : fun(T)}
 
 func _enter_tree() -> void:
 	velocity = Vector2.ZERO

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name StateTransition
 
 @export var transition_to : State

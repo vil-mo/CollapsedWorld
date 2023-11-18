@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://d10yywif8w1dq" path="res://entity/content/fighter/fighter.tscn" id="1_714gi"]
 [ext_resource type="Script" path="res://entity/content/fighter/player/player.gd" id="2_sev2q"]
 [ext_resource type="Script" path="res://entity/content/fighter/fighter_stats.gd" id="3_jihwc"]
-[ext_resource type="PackedScene" uid="uid://rvs7ucyvm5l5" path="res://entity/state_machine/states/idle_state/player_idle_state.tscn" id="4_44fjc"]
 [ext_resource type="PackedScene" uid="uid://bfbfq6371m8lr" path="res://entity/content/fighter/player/void_drop_effect.tscn" id="4_ri6pf"]
 [ext_resource type="Texture2D" uid="uid://6em3ehsaa0fl" path="res://entity/content/fighter/player/sprites/player_fall.png" id="5_oa0nd"]
 [ext_resource type="Texture2D" uid="uid://dkocmifd7b57w" path="res://entity/shades/medium_shade.png" id="6_didx4"]
 [ext_resource type="Texture2D" uid="uid://vgv5wm87m1dy" path="res://entity/content/fighter/player/sprites/player_default.png" id="6_iuf5p"]
 [ext_resource type="Script" path="res://entity/visuals/directional_animation_player.gd" id="8_7405v"]
-[ext_resource type="PackedScene" uid="uid://bp63renayb47c" path="res://entity/state_machine/state_machine.tscn" id="9_0ujis"]
+[ext_resource type="Script" path="res://entity/state_machine/state_machine.gd" id="9_f8w6q"]
+[ext_resource type="Script" path="res://entity/state_machine/states/idle_state/player_idle_state.gd" id="10_gph1t"]
 
 [sub_resource type="Resource" id="Resource_0a8yc"]
 script = ExtResource("3_jihwc")
@@ -180,7 +180,7 @@ fall_texture = ExtResource("5_oa0nd")
 my_alignments = 1
 metadata/_edit_horizontal_guides_ = []
 
-[node name="Visuals" parent="." index="2"]
+[node name="Visuals" parent="." index="1"]
 y_sort_enabled = false
 
 [node name="Shadow" type="Sprite2D" parent="Visuals" index="0"]
@@ -199,7 +199,7 @@ libraries = {
 }
 script = ExtResource("8_7405v")
 
-[node name="CollectableCollector" type="Area2D" parent="." index="5"]
+[node name="CollectableCollector" type="Area2D" parent="." index="4"]
 visible = false
 collision_layer = 32
 collision_mask = 0
@@ -207,8 +207,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableCollector" index="0"]
 shape = SubResource("CircleShape2D_s36ko")
 
-[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("first_state") instance=ExtResource("9_0ujis")]
+[node name="StateMachine" type="Node" parent="." index="5" node_paths=PackedStringArray("first_state")]
+script = ExtResource("9_f8w6q")
 first_state = NodePath("PlayerIdleState")
 
-[node name="PlayerIdleState" parent="StateMachine" index="0" instance=ExtResource("4_44fjc")]
-reset_velocity_when_moving_in_opposite_direction = null
+[node name="PlayerIdleState" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("10_gph1t")

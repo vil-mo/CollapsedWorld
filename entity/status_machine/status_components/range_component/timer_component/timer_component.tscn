@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn7a7yjdhyiqb"]
-
-[ext_resource type="Script" path="res://entity/status_machine/status_components/range_component/timer_component/timer_component.gd" id="1_yb163"]
-
-[node name="TimerComponent" type="Node2D"]
-script = ExtResource("1_yb163")

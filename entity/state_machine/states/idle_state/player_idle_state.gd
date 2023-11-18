@@ -21,7 +21,7 @@ func physics_process_state(delta : float):
 	
 	movement_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	
-	var direction_to_mouse := (get_global_mouse_position() - entity.global_position).angle()
+	var direction_to_mouse := 0#(CanvasItem.get_global_mouse_position() - entity.global_position).angle()
 	entity.directional_animation_player.play_direction("Idle", direction_to_mouse)
 	entity.set_meta(OrbitItem.LOOKING_DIRECTION_META, direction_to_mouse)
 	

@@ -3,9 +3,11 @@ class_name ApplyEffectImpact
 
 @export var effect_stats : EffectStats
 
-func _init(my_effect_stats : EffectStats = null):
+func _init(my_effect_stats : EffectStats = null, entity_to_apply : Entity = null):
 	if my_effect_stats:
 		effect_stats = my_effect_stats
+	if entity_to_apply:
+		entity_to_apply.apply_impact(self)
 
 func apply(entity : Entity):
 	var effect_script : Script = effect_stats.corresponding_effect

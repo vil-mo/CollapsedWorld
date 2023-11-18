@@ -2,7 +2,7 @@ extends Resource
 class_name Recipe
 
 @export var amount_crafted : int = 1
-@export var ingridients : Dictionary
+@export var ingridients : Dictionary # {ItemKey : int (amount needed)}
 
 var result : ItemKey
 var progression_point : float

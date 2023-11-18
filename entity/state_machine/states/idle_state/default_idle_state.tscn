@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bomki6emkmbai"]
-
-[ext_resource type="PackedScene" uid="uid://chjgbg0vvx43c" path="res://entity/state_machine/states/state.tscn" id="1_d7cxt"]
-[ext_resource type="Script" path="res://entity/state_machine/states/idle_state/default_idle_state.gd" id="2_27w3p"]
-
-[node name="DefaultIdleState" instance=ExtResource("1_d7cxt")]
-script = ExtResource("2_27w3p")
-reset_velocity_when_moving_in_opposite_direction = true

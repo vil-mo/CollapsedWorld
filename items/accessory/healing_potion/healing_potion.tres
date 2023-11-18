@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="ItemKey" load_steps=8 format=3 uid="uid://dysawxe3mb68q"]
+[gd_resource type="Resource" script_class="ItemKey" load_steps=7 format=3 uid="uid://dysawxe3mb68q"]
 
-[ext_resource type="PackedScene" path="res://items/accessory/healing_potion/healing_potion.tscn" id="1_1njvt"]
 [ext_resource type="Texture2D" uid="uid://by161qf7gllic" path="res://items/accessory/healing_potion/healing_potion_icon.png" id="1_3spuf"]
 [ext_resource type="Resource" uid="uid://do8xah1mxyx8j" path="res://items/material/cog/key_cog.tres" id="2_jnbjh"]
 [ext_resource type="Script" path="res://other/slot_storable/item_key.gd" id="2_vxjnl"]
@@ -20,7 +19,6 @@ script = ExtResource("2_vxjnl")
 key = "healing_potion"
 item_type = 2
 grounded_sprite = ExtResource("1_3spuf")
-equipment = ExtResource("1_1njvt")
 progression_point = 10.0
 biome = 8
 recipes = Array[ExtResource("3_0dibq")]([SubResource("Resource_au46s")])

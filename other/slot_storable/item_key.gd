@@ -6,7 +6,7 @@ enum ITEM_TYPE {ARMOR, WEAPON, ACCESSORY, RELIC, MATERIAL}
 @export var key : String
 @export var item_type : ITEM_TYPE
 @export var grounded_sprite : Texture2D = preload("res://items/no_sprite.png")
-@export var equipment : Script
+@export var equipment : PackedScene
 @export var equipment_stats : StatList
 @export var progression_point : float
 @export_flags("Forest", "Snow", "Jungle", "Desert", "Cave", "Beach") var biome : int
@@ -14,5 +14,5 @@ enum ITEM_TYPE {ARMOR, WEAPON, ACCESSORY, RELIC, MATERIAL}
 
 var amount : int = 0
 
-var equipment_instance : Equipment
+var equipment_instance : Equipment = null
 
